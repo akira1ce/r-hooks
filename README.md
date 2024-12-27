@@ -29,31 +29,3 @@ yarn add @akira1ce/r-hooks
 * [useDeepEffect](docs/useDeepEffect.md)
 * [useTable](docs/useTable.md)
 * [useLoopFetch](docs/useLoopFetch.md)
-
-
-## 🤌 Usage
-
-```javascript
-import { useLeast, useUpdate, use, useControl, useDeepEffect, useTable, useLoopFetch } from 'r-hooks';
-
-function MyComponent() {
-  const least = useLeast();
-  const update = useUpdate();
-  const control = useControl();
-  const deepEffect = useDeepEffect();
-  const table = useTable();
-  const loopFetch = useLoopFetch();
-
-  // Your component logic here
-
-  return (
-    <div>
-      {/* Your component JSX here */}
-    </div>
-  );
-}
-```
-
-## License
-
-This project is licensed under the MIT License.
