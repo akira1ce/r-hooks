@@ -1,0 +1,48 @@
+{
+  "name": "@akira1ce/r-hooks",
+  "version": "1.0.0",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "build": "rm -rf dist && rollup -c",
+    "lint": "eslint src --ext .ts,.tsx",
+    "format": "prettier --write src/**/*.ts"
+  },
+  "keywords": [
+    "react",
+    "react-hooks"
+  ],
+  "license": "MIT",
+  "description": "react hooks",
+  "browserslist": [
+    ">1%",
+    "last 1 version",
+    "Firefox ESR",
+    "not dead"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/akira1ce/r-hooks.git"
+  },
+  "author": {
+    "name": "Akira Ice",
+    "email": "akiraice@163.com"
+  },
+  "devDependencies": {
+    "@rollup/plugin-commonjs": "^28.0.2",
+    "@rollup/plugin-node-resolve": "^16.0.0",
+    "@types/react": "^19.0.2",
+    "eslint": "^9.17.0",
+    "prettier": "^3.4.2",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0",
+    "rollup": "^4.29.1",
+    "rollup-plugin-typescript2": "^0.36.0",
+    "tslib": "^2.8.1",
+    "typescript": "^5.7.2"
+  },
+  "peerDependencies": {
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0"
+  }
+}
