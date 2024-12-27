@@ -8,7 +8,7 @@
 
 A collection of React hooks to make your code easier.
 
-## Installation
+## 🦹‍♂️ Installation
 
 ```bash
 npm install @akira1ce/r-hooks
@@ -20,17 +20,18 @@ or
 yarn add @akira1ce/r-hooks
 ```
 
-## Available Hooks
-- `useLeast`: Keeps the latest value.
-- `useUpdate`: Force update.
-- `use`: mock React Hooks use method.
-- `useControl`: Component controlled state management.
-- `useDeepEffect`: useEffect with deep comparison of dependencies, usage is the same as useEffect.
-- `useTable`: Table data request.
-- `useLoopFetch`: Loop fetch request.
+## 🎨 Hooks
+
+* [useLeast](docs/useLeast.md)
+* [useUpdate](docs/useUpdate.md)
+* [use](docs/use.md)
+* [useControl](docs/useControl.md)
+* [useDeepEffect](docs/useDeepEffect.md)
+* [useTable](docs/useTable.md)
+* [useLoopFetch](docs/useLoopFetch.md)
 
 
-## Usage
+## 🤌 Usage
 
 ```javascript
 import { useLeast, useUpdate, use, useControl, useDeepEffect, useTable, useLoopFetch } from 'r-hooks';
