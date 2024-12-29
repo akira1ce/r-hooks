@@ -1,8 +1,13 @@
 {
   "name": "@akira1ce/r-hooks",
-  "version": "1.0.3",
-  "main": "index.js",
+  "version": "1.0.6",
   "type": "module",
+  "main": "dist/lib/index.js",
+  "module": "dist/es/index.js",
+  "types": "dist/es/hooks/index.d.ts",
+  "files": [
+    "dist"
+  ],
   "scripts": {
     "build": "rm -rf dist && rollup -c",
     "lint": "eslint src --ext .ts,.tsx",

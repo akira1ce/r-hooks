@@ -8,12 +8,10 @@ export default {
     {
       dir: 'dist/lib',
       format: 'cjs',
-      exports: 'named',
     },
     {
       dir: 'dist/es',
       format: 'esm',
-      exports: 'named',
     },
   ],
   plugins: [resolve(), commonjs(), typescript()],
