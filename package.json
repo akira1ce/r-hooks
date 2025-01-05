@@ -11,7 +11,8 @@
   "scripts": {
     "build": "rm -rf dist && rollup -c",
     "lint": "eslint src --ext .ts,.tsx",
-    "format": "prettier --write src/**/*.ts"
+    "format": "prettier --write src/**/*.ts",
+    "generate-docs": "node scripts/generate-docs.js"
   },
   "keywords": [
     "react",
