@@ -13,7 +13,8 @@
     "paths": {
       "@/*": ["src/*"]
     },
-    "lib": ["ES2016", "DOM"]
+    "lib": ["ES2016", "DOM"],
+    "jsx": "react-jsx"
   },
   "include": ["src"]
 }
