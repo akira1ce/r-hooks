@@ -11,6 +11,10 @@ interface ProviderProps {
 
 export type Hook<State, Params = void> = (params?: Params) => State;
 
+/**
+ * Context state management
+ * @example const [value, setValue] = useContextStore(useValue);
+ */
 function useContextStore<State, Params = void>(
   useHook: Hook<State, Params>,
   params?: Params
