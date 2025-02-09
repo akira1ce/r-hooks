@@ -13,9 +13,33 @@ export type Hook<State, Params = void> = (params?: Params) => State;
 
 /**
  * Context state management
- * @example const [value, setValue] = useContextStore(useValue);
+ * remember, this hook should be called in a separate module and export its, then import into other modules to using.
+ * @example
+ * ```js
+ * // models/a.js
+ * import useHook from 'xxx'
+ * export const { Provider, useStore } = createContextStore(useHook)
+ *
+ * // Comp.js
+ * import { Provider, useStore } from 'xxx/models/a.js'
+ *
+ * const ChildComp = () => {
+ *   const store = useStore();
+ *   return <>ChildComp</>
+ * }
+ *
+ * const Comp = () => {
+ *   const store = useStore();
+ *     return <>
+ *       <Provider>
+ *         <ChildComp/>
+ *       </Provider>
+ *     </>
+ * }
+ * ```
+ *
  */
-function useContextStore<State, Params = void>(
+function createContextStore<State, Params = void>(
   useHook: Hook<State, Params>,
   params?: Params
 ): Store<State> {
@@ -39,4 +63,4 @@ function useContextStore<State, Params = void>(
   return { Provider, useStore };
 }
 
-export default useContextStore;
+export default createContextStore;
