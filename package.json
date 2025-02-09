@@ -28,7 +28,7 @@
   ],
   "repository": {
     "type": "git",
-    "url": "https://github.com/akira1ce/r-hooks.git"
+    "url": "git+https://github.com/akira1ce/r-hooks.git"
   },
   "author": {
     "name": "Akira Ice",
