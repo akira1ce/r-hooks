@@ -9,7 +9,6 @@ type Service<TData, TParams extends any[]> = (...args: TParams) => Promise<TData
 
 /**
  * Loop fetch request
- * @example const { data, loading, run, runAsync, cancel, isOvertime } = useLoopFetch(api, { pollingInterval: 1000, pollingOvertimes: 5 });
  */
 export default function useLoopFetch<TData, TParams extends any[]>(
   api: Service<TData, TParams>,

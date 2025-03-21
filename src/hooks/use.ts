@@ -6,7 +6,6 @@ type PromiseWithStatus<T> = Promise<T> & {
 
 /**
  * mock React Hooks use method
- * @example const data = use(fetchData());
  */
 export default function use<T>(promise: PromiseWithStatus<T>): T {
   if (promise.status === 'fulfilled') {

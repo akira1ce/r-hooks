@@ -3,8 +3,11 @@ import { useCallback, useMemo, useRef } from 'react';
 import useUpdate from './useUpdate';
 
 export interface UseControlOptions<T> {
+  /** 默认值 */
   defaultValue?: T;
+  /** 值的字段 */
   valuePropName?: string;
+  /** 改变回调字的段 */
   target?: string;
 }
 
@@ -16,7 +19,6 @@ export interface UseControllProps<T> {
 
 /**
  * Component controlled state management
- * @example const [value, setValue] = useControl(props);
  */
 export default function useControl<T>(props: UseControllProps<T>, options?: UseControlOptions<T>) {
   const {

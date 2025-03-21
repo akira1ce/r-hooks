@@ -33,19 +33,7 @@ async function generateDocs() {
     }
 
     // 生成文档内容
-    const docContent = `# ${hookName}
-
-    ## Feature
-    here is the feature of ${hookName}.
-
-    ## Usage
-    \`\`\`js
-    \`\`\`
-
-    ## Types
-    \`\`\`ts
-    \`\`\`
-    `;
+    const docContent = `# ${hookName}\n\n## Feature\nhere is the feature of ${hookName}.\n\n## Usage\n\`\`\`js\n\`\`\`\n\n## Types\n\`\`\`ts\n\`\`\``;
 
     // 写入文档文件
     fs.writeFileSync(docPath, docContent);
