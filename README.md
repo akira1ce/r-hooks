@@ -22,10 +22,11 @@ yarn add @akira1ce/r-hooks
 
 ## 🎨 Hooks
 
-* [useLeast](docs/useLeast.md)
-* [useUpdate](docs/useUpdate.md)
-* [use](docs/use.md)
-* [useControl](docs/useControl.md)
-* [useDeepEffect](docs/useDeepEffect.md)
-* [useTable](docs/useTable.md)
-* [useLoopFetch](docs/useLoopFetch.md)
+* [use](src/use.ts)
+* [useControl](src/useControl.ts)
+* [useDeepEffect](src/useDeepEffect.ts)
+* [useFetchStream](src/useFetchStream.ts)
+* [useLeast](src/useLeast.ts)
+* [useLoopFetch](src/useLoopFetch.ts)
+* [useTable](src/useTable.ts)
+* [useUpdate](src/useUpdate.ts)
