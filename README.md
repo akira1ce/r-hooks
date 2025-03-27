@@ -1,6 +1,6 @@
 <div align="center">
   <p align="center">
-    <img src="./logo.png" alt="Beautiful React Hooks" width="500px" />
+    <img src/hooks="./logo.png" alt="Beautiful React Hooks" width="500px" />
   </p>
 </div>
 
@@ -22,11 +22,11 @@ yarn add @akira1ce/r-hooks
 
 ## 🎨 Hooks
 
-* [use](src/use.ts)
-* [useControl](src/useControl.ts)
-* [useDeepEffect](src/useDeepEffect.ts)
-* [useFetchStream](src/useFetchStream.ts)
-* [useLeast](src/useLeast.ts)
-* [useLoopFetch](src/useLoopFetch.ts)
-* [useTable](src/useTable.ts)
-* [useUpdate](src/useUpdate.ts)
+* [use](src/hooks/use.ts)
+* [useControl](src/hooks/useControl.ts)
+* [useDeepEffect](src/hooks/useDeepEffect.ts)
+* [useFetchStream](src/hooks/useFetchStream.ts)
+* [useLeast](src/hooks/useLeast.ts)
+* [useLoopFetch](src/hooks/useLoopFetch.ts)
+* [useTable](src/hooks/useTable.ts)
+* [useUpdate](src/hooks/useUpdate.ts)
