@@ -10,10 +10,10 @@ type Service<TData, TParams extends any[]> = (...args: TParams) => Promise<TData
 /**
  * Loop fetch request
  */
-export default function useLoopFetch<TData, TParams extends any[]>(
+export const useLoopFetch = <TData, TParams extends any[]>(
   api: Service<TData, TParams>,
   options: IUseLoopFetchOptions = {}
-) {
+) => {
   const [loading, setLoading] = useState(false);
   const [data, setData] = useState<TData>();
   const [isOvertime, setIsOvertime] = useState(false);
@@ -75,4 +75,4 @@ export default function useLoopFetch<TData, TParams extends any[]>(
   };
 
   return { data, loading, run, runAsync, cancel, isOvertime };
-}
+};

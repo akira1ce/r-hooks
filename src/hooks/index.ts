@@ -1,8 +1,19 @@
-export { default as useLeast } from './useLeast';
-export { default as useUpdate } from './useUpdate';
-export { default as use } from './use';
-export { default as useControl } from './useControl';
-export { default as useDeepEffect } from './useDeepEffect';
-export { default as useTable } from './useTable';
-export { default as useLoopFetch } from './useLoopFetch';
-export { default as useFetchStream } from './useFetchStream';
+import { useLeast } from './useLeast';
+import { useUpdate } from './useUpdate';
+import { use } from './use';
+import { useControl } from './useControl';
+import { useDeepEffect } from './useDeepEffect';
+import { useTable } from './useTable';
+import { useLoopFetch } from './useLoopFetch';
+import { useFetchStream } from './useFetchStream';
+
+export {
+  useLeast,
+  useUpdate,
+  useControl,
+  useDeepEffect,
+  useTable,
+  useLoopFetch,
+  useFetchStream,
+  use,
+};

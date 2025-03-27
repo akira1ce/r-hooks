@@ -4,7 +4,7 @@ import { isEqual } from '@/utils/object';
 /**
  * useEffect with deep comparison of dependencies, usage is the same as useEffect
  */
-export default function useDeepEffect(fn: () => () => void, deps: any[]) {
+export const useDeepEffect = (fn: () => () => void, deps: any[]) => {
   const isFirst = useRef(true);
   const prevDeps = useRef(deps);
 
@@ -19,4 +19,4 @@ export default function useDeepEffect(fn: () => () => void, deps: any[]) {
       return fn();
     }
   }, deps);
-}
+};

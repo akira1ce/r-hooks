@@ -1,6 +1,6 @@
 import { has } from '@/utils/object';
 import { useCallback, useMemo, useRef } from 'react';
-import useUpdate from './useUpdate';
+import { useUpdate } from './useUpdate';
 
 export interface UseControlOptions<T> {
   /** 默认值 */
@@ -20,7 +20,7 @@ export interface UseControllProps<T> {
 /**
  * Component controlled state management
  */
-export default function useControl<T>(props: UseControllProps<T>, options?: UseControlOptions<T>) {
+export const useControl = <T>(props: UseControllProps<T>, options?: UseControlOptions<T>) => {
   const {
     valuePropName = 'value',
     target = 'onChange',
@@ -51,4 +51,4 @@ export default function useControl<T>(props: UseControllProps<T>, options?: UseC
   }, []);
 
   return [state.current, setState] as const;
-}
+};

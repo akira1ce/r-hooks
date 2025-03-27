@@ -7,7 +7,7 @@ type PromiseWithStatus<T> = Promise<T> & {
 /**
  * mock React Hooks use method
  */
-export default function use<T>(promise: PromiseWithStatus<T>): T {
+export function use<T>(promise: PromiseWithStatus<T>): T {
   if (promise.status === 'fulfilled') {
     return promise.value as T;
   } else if (promise.status === 'rejected') {

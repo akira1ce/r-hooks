@@ -3,7 +3,7 @@ import { useState, useCallback } from 'react';
 /**
  * Force update
  */
-export default function useUpdate() {
+export const useUpdate = () => {
   const [_, update] = useState({});
   return useCallback(() => update({}), []);
-}
+};

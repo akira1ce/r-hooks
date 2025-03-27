@@ -11,7 +11,7 @@ export interface RequestCallbacks {
  * @param url ai-fetch-url
  * @param token ai-token
  */
-const useFetchStream = (url: string, token: string) => {
+export const useFetchStream = (url: string, token: string) => {
   const [loading, setLoading] = useState<boolean>(false);
 
   const messages = useRef<string[]>([]);
@@ -63,5 +63,3 @@ const useFetchStream = (url: string, token: string) => {
 
   return { loading, fetchApi, abort };
 };
-
-export default useFetchStream;
