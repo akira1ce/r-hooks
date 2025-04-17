@@ -1,9 +1,9 @@
 import { useState, useCallback, useRef } from 'react';
 
 export interface RequestCallbacks {
-  onUpdate: (message: string) => void;
-  onError: (error: Error) => void;
-  onSuccess: (message: string[]) => void;
+  onUpdate?: (message: string) => void;
+  onError?: (error: Error) => void;
+  onSuccess?: (message: string[]) => void;
 }
 
 /**
@@ -49,12 +49,12 @@ export const useFetchStream = (url: string, token: string) => {
         done = chunkDone;
         const chunkContent = decoder.decode(chunk, { stream: !done });
         messages.current.push(chunkContent);
-        onUpdate(chunkContent);
+        onUpdate && onUpdate(chunkContent);
       }
 
-      onSuccess(messages.current);
+      onSuccess && onSuccess(messages.current);
     } catch (err: any) {
-      onError(err);
+      onError && onError(err);
       console.error('err :>> ', err);
     } finally {
       setLoading(false);
