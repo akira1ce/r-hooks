@@ -1,18 +1,18 @@
 import { useRef, useState } from 'react';
 
-interface IUseLoopFetchOptions {
+export interface UseLoopFetchOptions {
   pollingInterval?: number;
   pollingOvertimes?: number;
 }
 
-type Service<TData, TParams extends any[]> = (...args: TParams) => Promise<TData>;
+export type Service<TData, TParams extends any[]> = (...args: TParams) => Promise<TData>;
 
 /**
  * Loop fetch request
  */
 export const useLoopFetch = <TData, TParams extends any[]>(
   api: Service<TData, TParams>,
-  options: IUseLoopFetchOptions = {}
+  options: UseLoopFetchOptions = {}
 ) => {
   const [loading, setLoading] = useState(false);
   const [data, setData] = useState<TData>();

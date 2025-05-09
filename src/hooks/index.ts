@@ -1,19 +1,23 @@
-import { useLeast } from './useLeast';
-import { useUpdate } from './useUpdate';
 import { use } from './use';
+import { useAutoScroll } from './useAutoScroll';
 import { useControl } from './useControl';
 import { useDeepEffect } from './useDeepEffect';
-import { useTable } from './useTable';
+import { useLeast } from './useLeast';
 import { useLoopFetch } from './useLoopFetch';
-import { useFetchStream } from './useFetchStream';
+import { useMemoizedFn } from './useMemoizedFn';
+import { useTable } from './useTable';
+import { useUpdate } from './useUpdate';
+import { useXStream } from './useXStream';
 
 export {
-  useLeast,
-  useUpdate,
+  use,
+  useAutoScroll,
   useControl,
   useDeepEffect,
-  useTable,
+  useLeast,
   useLoopFetch,
-  useFetchStream,
-  use,
+  useMemoizedFn,
+  useTable,
+  useUpdate,
+  useXStream,
 };

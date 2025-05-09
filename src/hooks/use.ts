@@ -1,4 +1,4 @@
-type PromiseWithStatus<T> = Promise<T> & {
+export type PromiseWithStatus<T> = Promise<T> & {
   status?: 'pending' | 'fulfilled' | 'rejected';
   value?: T;
   reason?: any;

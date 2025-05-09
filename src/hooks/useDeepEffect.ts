@@ -1,5 +1,6 @@
 import { useRef, useEffect } from 'react';
 import { isEqual } from '@/utils/object';
+import { useMemoizedFn } from './useMemoizedFn';
 
 /**
  * useEffect with deep comparison of dependencies, usage is the same as useEffect
@@ -7,6 +8,8 @@ import { isEqual } from '@/utils/object';
 export const useDeepEffect = (fn: () => () => void, deps: any[]) => {
   const isFirst = useRef(true);
   const prevDeps = useRef(deps);
+
+  const _fn = useMemoizedFn(fn);
 
   useEffect(() => {
     const isFirstEffect = isFirst.current;
@@ -16,7 +19,7 @@ export const useDeepEffect = (fn: () => () => void, deps: any[]) => {
     prevDeps.current = deps;
 
     if (isFirstEffect || !isSame) {
-      return fn();
+      return _fn();
     }
   }, deps);
 };
