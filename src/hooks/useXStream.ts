@@ -29,19 +29,17 @@ export const useXStream = (fetcher: Fetcher, options: UseXStreamOptions = {}) =>
     let currentData = '';
 
     chunks.map((item) => {
-      if (item.startsWith('data:')) currentData += item.replace('data:', '').trim();
+      currentData += item.trim();
 
       // SSE 段落结束
-      if (item === '') {
-        if (currentData) {
-          lines.push(currentData);
-          currentData = '';
-        }
+      if (item === '' && currentData !== '') {
+        lines.push(currentData);
+        currentData = '';
       }
     });
 
     // 保留未完成段落
-    bufferRef.current = currentData ? `data: ${currentData}\n` : '';
+    bufferRef.current = currentData;
 
     return lines;
   };
