@@ -12,7 +12,8 @@
     "build": "rm -rf dist && rollup -c",
     "lint": "eslint src --ext .ts,.tsx",
     "format": "prettier --write src/**/*.ts",
-    "generate-docs": "node scripts/generate-docs.js"
+    "generate-docs": "node scripts/generate-docs.js",
+    "generate-hook": "node scripts/generate-hook.js"
   },
   "keywords": [
     "react",
