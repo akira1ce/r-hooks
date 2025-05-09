@@ -1,6 +1,6 @@
 <div align="center">
   <p align="center">
-    <img src/hooks="./logo.png" alt="Beautiful React Hooks" width="500px" />
+    <img src/hooks="/logo.png" alt="Beautiful React Hooks" width="500px" />
   </p>
 </div>
 
