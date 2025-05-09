@@ -19,14 +19,3 @@ or
 ```bash
 yarn add @akira1ce/r-hooks
 ```
-
-## 🎨 Hooks
-
-* [use](src/hooks/use.ts)
-* [useControl](src/hooks/useControl.ts)
-* [useDeepEffect](src/hooks/useDeepEffect.ts)
-* [useFetchStream](src/hooks/useFetchStream.ts)
-* [useLeast](src/hooks/useLeast.ts)
-* [useLoopFetch](src/hooks/useLoopFetch.ts)
-* [useTable](src/hooks/useTable.ts)
-* [useUpdate](src/hooks/useUpdate.ts)
