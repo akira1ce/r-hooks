@@ -1,6 +1,7 @@
 import { get } from '@/utils/object';
 import { useCallback, useEffect, useRef, useState } from 'react';
 
+/* you may need to customize the params */
 export interface Params {
   pageNum: number;
   pageSize: number;
@@ -16,12 +17,14 @@ export interface Options<T> {
   };
 }
 
+/* you may need to customize the response */
 interface ResponseData<T> {
   total: number;
   records: T[];
   [key: string]: any;
 }
 
+/* you may need to customize the response */
 interface Response<T> {
   code: number;
   error: string;
@@ -33,6 +36,7 @@ type Api<T, K> = (params: T) => Promise<Response<K>>;
 
 /**
  * Table data request
+ * Need to be agreed with the agreement
  * @example const { data, loading, total, pagination, fetchApi } = useTable(api, { defaultParams: { pageNum: 1, pageSize: 10 } });
  */
 export const useTable = <T, K = Params>(api: Api<K, T>, options?: Options<K>) => {
@@ -41,8 +45,10 @@ export const useTable = <T, K = Params>(api: Api<K, T>, options?: Options<K>) =>
   const [loading, setLoading] = useState(false);
   const [total, setTotal] = useState(0);
 
+  /* you may need to customize the paths */
   const _paths = { data: 'res.records', total: 'res.total', ...paths };
 
+  /* you may need to customize the params */
   const _params = useRef<any>({
     pageNum: 1,
     pageSize: 10,
@@ -72,6 +78,7 @@ export const useTable = <T, K = Params>(api: Api<K, T>, options?: Options<K>) =>
     if (!loading) return;
     api(_params.current)
       .then((ress) => {
+        /* you may need to customize the response */
         if (ress.code !== 0) throw new Error(ress.error);
         setData(get(ress, _paths.data) || []);
         setTotal(get(ress, _paths.total) || 0);
