@@ -44,14 +44,14 @@ export const useXStream = (fetcher: Fetcher, options: UseXStreamOptions = {}) =>
     return lines;
   };
 
-  const cancel = useCallback(() => {
+  const cancel = () => {
     if (controller.current) {
       controller.current.abort();
       controller.current = null;
     }
-  }, []);
+  };
 
-  const run = useCallback(async (params: any) => {
+  const run = useMemoizedFn(async (params: any) => {
     // 重置状态
     setLoading(true);
     setError(null);
@@ -111,7 +111,7 @@ export const useXStream = (fetcher: Fetcher, options: UseXStreamOptions = {}) =>
         console.error('Stream error:', err);
       }
     }
-  }, []);
+  });
 
   return { content, loading, error, run, cancel };
 };
