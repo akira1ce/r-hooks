@@ -1,5 +1,5 @@
 import { useMemoizedFn } from './useMemoizedFn';
-import { useCallback, useRef, useState } from 'react';
+import { useRef, useState } from 'react';
 
 export interface UseXStreamOptions {
   /** 转换器 */
@@ -8,6 +8,11 @@ export interface UseXStreamOptions {
 
 export type Fetcher = (params: any, signal?: AbortSignal) => Promise<Response>;
 
+/**
+ * 流式请求
+ * @param fetcher 请求函数
+ * @param options 选项
+ */
 export const useXStream = (fetcher: Fetcher, options: UseXStreamOptions = {}) => {
   const { transform } = options;
 
@@ -85,15 +90,10 @@ export const useXStream = (fetcher: Fetcher, options: UseXStreamOptions = {}) =>
         if (done) break;
 
         const decodedChunk = decoder.decode(chunk);
-
         const lines = transformChunk(decodedChunk);
-
-        console.log('lines :>> ', lines);
 
         lines.map((item) => {
           const transformedChunk = _transform(item);
-
-          console.log('transformedChunk :>> ', transformedChunk);
           value += transformedChunk;
           setContent(value);
         });
