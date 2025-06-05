@@ -3,7 +3,7 @@ import { useAutoScroll } from './useAutoScroll';
 import { useControl } from './useControl';
 import { useDeepEffect } from './useDeepEffect';
 import { useLeast } from './useLeast';
-import { useLoopFetch } from './useLoopFetch';
+import { useRequest } from './useRequest';
 import { useMemoizedFn } from './useMemoizedFn';
 import { useTable } from './useTable';
 import { useUpdate } from './useUpdate';
@@ -15,7 +15,7 @@ export {
   useControl,
   useDeepEffect,
   useLeast,
-  useLoopFetch,
+  useRequest,
   useMemoizedFn,
   useTable,
   useUpdate,
