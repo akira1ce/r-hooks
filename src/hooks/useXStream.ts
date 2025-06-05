@@ -20,7 +20,7 @@ export const useXStream = (fetcher: Fetcher, options: UseXStreamOptions = {}) =>
   const [loading, setLoading] = useState<boolean>(false);
   const [error, setError] = useState<Error | null>(null);
 
-  const controller = useRef<AbortController>(null);
+  const controller = useRef<AbortController | null>(null);
   const bufferRef = useRef('');
 
   const _transform = useMemoizedFn(transform ?? ((val) => val));
