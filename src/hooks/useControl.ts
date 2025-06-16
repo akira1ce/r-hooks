@@ -1,5 +1,6 @@
 import { has } from '@/utils/object';
-import { useCallback, useMemo, useRef } from 'react';
+import { useMemo, useRef } from 'react';
+import { useMemoizedFn } from './useMemoizedFn';
 import { useUpdate } from './useUpdate';
 
 export interface UseControlOptions<T> {
@@ -42,13 +43,13 @@ export const useControl = <T>(props: UseControllProps<T>, options?: UseControlOp
 
   if (isControlled) state.current = value;
 
-  const setState = useCallback((v: T) => {
+  const setState = useMemoizedFn((v: T) => {
     if (!isControlled) {
       state.current = v;
       update();
     }
     props[target]?.(v);
-  }, []);
+  });
 
   return [state.current, setState] as const;
 };
