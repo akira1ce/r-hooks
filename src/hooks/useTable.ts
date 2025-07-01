@@ -1,3 +1,4 @@
+import { debounce } from '@/utils/function';
 import { get } from '@/utils/object';
 import { useCallback, useEffect, useRef, useState } from 'react';
 
@@ -39,9 +40,9 @@ type Api<T, K> = (params: T) => Promise<Response<K>>;
  * Need to be agreed with the agreement
  * @example const { data, loading, total, pagination, fetchApi } = useTable(api, { defaultParams: { pageNum: 1, pageSize: 10 } });
  */
-export const useTable = <T, K = Params>(api: Api<K, T>, options?: Options<K>) => {
+export const useTable = <T, K>(api: Api<T, K>, options?: Options<T>) => {
   const { manual, defaultParams, paths } = options || {};
-  const [data, setData] = useState<T[]>([]);
+  const [data, setData] = useState<K[]>([]);
   const [loading, setLoading] = useState(false);
   const [total, setTotal] = useState(0);
 
@@ -69,10 +70,13 @@ export const useTable = <T, K = Params>(api: Api<K, T>, options?: Options<K>) =>
     },
   };
 
-  const fetchApi = useCallback((params?: Partial<K>) => {
-    _params.current = { ..._params.current, ...params };
-    setLoading(true);
-  }, []);
+  const fetchApi = useCallback(
+    debounce((params?: Partial<T>) => {
+      _params.current = { ..._params.current, ...params };
+      setLoading(true);
+    }, 300),
+    []
+  );
 
   useEffect(() => {
     if (!loading) return;
