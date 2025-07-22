@@ -1,9 +1,5 @@
 # use
 
-Mock React Hooks `use` method for handling promises with status tracking.
-
-## 功能
-
 模拟 React 18+ 的 `use` hook，用于处理带状态的 Promise 对象。支持 pending、fulfilled、rejected 三种状态的管理。
 
 ## 用法
