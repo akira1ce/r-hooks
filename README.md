@@ -16,21 +16,21 @@ yarn add @akira1ce/r-hooks
 
 ## hooks
 
-- **[use](/docs/use.md)** - 模拟 React 18+ 的 use hook，处理 Promise 状态
-- **[useLeast](/docs/useLeast.md)** - 保持最新值，解决闭包问题
-- **[useMemoizedFn](/docs/useMemoizedFn.md)** - 记忆化函数，稳定引用
-- **[useUpdate](/docs/useUpdate.md)** - 强制组件重新渲染
-- **[useDeepEffect](/docs/useDeepEffect.md)** - 深度比较依赖的 useEffect
+- **[use](/docs/use.md)** - Simulates React 18+ `use` hook, handles Promise states
+- **[useLeast](/docs/useLeast.md)** - Keeps the latest value, solves closure issues
+- **[useMemoizedFn](/docs/useMemoizedFn.md)** - Memoized function with stable reference
+- **[useUpdate](/docs/useUpdate.md)** - Forces component re-render
+- **[useDeepEffect](/docs/useDeepEffect.md)** - `useEffect` with deep dependency comparison
 
-- **[useControl](/docs/useControl.md)** - 受控/非受控组件状态管理
+- **[useControl](/docs/useControl.md)** - Controlled/uncontrolled component state management
 
-- **[useRequest](/docs/useRequest.md)** - 通用请求管理，支持轮询
-- **[useXStream](/docs/useXStream.md)** - 流式请求处理
-- **[useTable](/docs/useTable.md)** - 表格数据请求管理
+- **[useRequest](/docs/useRequest.md)** - General request management, supports polling
+- **[useXStream](/docs/useXStream.md)** - Stream-based request handling
+- **[useTable](/docs/useTable.md)** - Table data request management
 
-- **[useClickAway](/docs/useClickAway.md)** - 监听点击元素外部事件
-- **[useEventListener](/docs/useEventListener.md)** - 事件监听 Hook
-- **[useAutoScroll](/docs/useAutoScroll.md)** - 自动滚动管理
+- **[useClickAway](/docs/useClickAway.md)** - Detects clicks outside a target element
+- **[useEventListener](/docs/useEventListener.md)** - Event listener hook
+- **[useAutoScroll](/docs/useAutoScroll.md)** - Automatic scroll management
 
-- **[useFileUploader](/docs/useFileUploader.md)** - 文件上传管理
-- **[useMos](/docs/useMos.md)** - 监听鼠标在元素上的移动，返回详细的鼠标与元素信息。
+- **[useFileUploader](/docs/useFileUploader.md)** - File upload management
+- **[useMos](/docs/useMos.md)** - Tracks mouse movement over an element, returns detailed mouse and element info
