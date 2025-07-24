@@ -38,7 +38,6 @@ type Api<T, K> = (params: T) => Promise<Response<K>>;
 /**
  * Table data request
  * Need to be agreed with the agreement
- * @example const { data, loading, total, pagination, fetchApi } = useTable(api, { defaultParams: { pageNum: 1, pageSize: 10 } });
  */
 export const useTable = <T, K>(api: Api<T, K>, options?: Options<T>) => {
 	const { manual, defaultParams, paths } = options || {};

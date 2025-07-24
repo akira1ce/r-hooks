@@ -1,21 +1,16 @@
 import { useCallback, useEffect, useRef, useState } from "react";
 
 export interface UseRequestOptions {
-	/** 是否手动触发 */
+	/** whether to manually trigger */
 	manual?: boolean;
-	/** 轮询间隔 */
+	/** polling interval */
 	pollingInterval?: number;
-	/** 轮询重试次数 */
+	/** polling retry count */
 	pollingRetryCount?: number;
 }
 
 export type Service<TData, TParams> = (params?: TParams) => Promise<TData>;
 
-/**
- * 请求
- * @param api 请求函数
- * @param options 选项
- */
 export const useRequest = <TData, TParams>(
 	api: Service<TData, TParams>,
 	options: UseRequestOptions = {},
@@ -23,13 +18,13 @@ export const useRequest = <TData, TParams>(
 	const [loading, setLoading] = useState(false);
 	const [data, setData] = useState<TData>();
 
-	/* 轮询定时器 */
+	/* polling timer */
 	const timer = useRef<any>(null);
 	const retryCount = useRef(0);
 
 	const { manual = false, pollingInterval, pollingRetryCount } = options;
 
-	/* 取消轮询 */
+	/* cancel polling */
 	const cancel = useCallback(() => {
 		if (timer.current) {
 			clearTimeout(timer.current);
@@ -38,9 +33,9 @@ export const useRequest = <TData, TParams>(
 		}
 	}, []);
 
-	/* 轮询 */
+	/* polling */
 	const _loop = useCallback((params?: TParams) => {
-		/* 轮询重试次数为 -1 时，无限轮询 */
+		/* when polling retry count is -1, polling infinitely */
 		if (
 			pollingRetryCount !== -1 &&
 			pollingRetryCount &&
@@ -54,7 +49,7 @@ export const useRequest = <TData, TParams>(
 		}, pollingInterval);
 	}, []);
 
-	/* 执行请求 */
+	/* execute request */
 	const run = useCallback(async (params?: TParams) => {
 		try {
 			setLoading(true);
@@ -69,7 +64,7 @@ export const useRequest = <TData, TParams>(
 		}
 	}, []);
 
-	/* 手动触发 */
+	/* manually trigger */
 	useEffect(() => {
 		if (!manual) run();
 	}, []);

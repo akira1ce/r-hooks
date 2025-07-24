@@ -2,16 +2,14 @@ import { useRef, useState } from "react";
 import { useMemoizedFn } from "./useMemoizedFn";
 
 export interface UseXStreamOptions {
-	/** 转换器 */
+	/** transformer */
 	transform?: (value: string) => string;
 }
 
 export type Fetcher = (params: any, signal?: AbortSignal) => Promise<Response>;
 
 /**
- * 流式请求
- * @param fetcher 请求函数
- * @param options 选项
+ * stream request
  */
 export const useXStream = (
 	fetcher: Fetcher,
@@ -28,7 +26,7 @@ export const useXStream = (
 
 	const _transform = useMemoizedFn(transform ?? ((val) => val));
 
-	/* 转换 SSE 数据 */
+	/* transform SSE data */
 	const transformChunk = (chunk: string) => {
 		bufferRef.current += chunk;
 		const chunks = bufferRef.current.split("\n");
@@ -39,14 +37,14 @@ export const useXStream = (
 		chunks.map((item) => {
 			currentData += item.trim();
 
-			// SSE 段落结束
+			/* SSE paragraph end */
 			if (item === "" && currentData !== "") {
 				lines.push(currentData);
 				currentData = "";
 			}
 		});
 
-		// 保留未完成段落
+		/* keep incomplete paragraph */
 		bufferRef.current = currentData;
 
 		return lines;
@@ -60,16 +58,16 @@ export const useXStream = (
 	};
 
 	const run = useMemoizedFn(async (params: any) => {
-		// 重置状态
+		/* reset state */
 		setLoading(true);
 		setError(null);
 		setContent("");
 		bufferRef.current = "";
 
-		// 取消之前的请求
+		/* cancel previous request */
 		cancel();
 
-		// 创建新的 AbortController
+		/* create new AbortController */
 		controller.current = new AbortController();
 
 		try {
@@ -107,7 +105,7 @@ export const useXStream = (
 			setError(err);
 			setLoading(false);
 
-			// 错误处理
+			/* error handling */
 			if (err.name === "AbortError") {
 				console.log("Request was aborted");
 			} else {

@@ -4,14 +4,14 @@ import { type DomTarget, getTargetElement } from "@/helper/domTarget";
 export const useAutoScroll = (target: DomTarget, deps: DependencyList = []) => {
 	const [enableAutoScroll, setEnableAutoScroll] = useState(true);
 
-	// 滚动到底部
+	/* scroll to bottom */
 	const scrollToBottom = () => {
 		const el = getTargetElement(target);
 		if (!el) return;
 		el.scrollTop = el.scrollHeight;
 	};
 
-	// 处理滚动事件
+	/* handle scroll event */
 	const handleScroll = (e: React.UIEvent<HTMLDivElement>) => {
 		const element = e.currentTarget;
 		const isScrolledToBottom =
@@ -21,7 +21,7 @@ export const useAutoScroll = (target: DomTarget, deps: DependencyList = []) => {
 		setEnableAutoScroll(isScrolledToBottom);
 	};
 
-	// 监听依赖项变化，自动滚动到底部
+	/* listen to dependency changes, auto scroll to bottom */
 	useEffect(() => {
 		enableAutoScroll && scrollToBottom();
 	}, [...deps, enableAutoScroll]);

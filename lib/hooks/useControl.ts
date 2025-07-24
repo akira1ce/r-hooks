@@ -4,11 +4,11 @@ import { useMemoizedFn } from "./useMemoizedFn";
 import { useUpdate } from "./useUpdate";
 
 export interface UseControlOptions<T> {
-	/** 默认值 */
+	/** default value */
 	defaultValue?: T;
-	/** 值的字段 */
+	/** value field */
 	valuePropName?: string;
-	/** 改变回调字的段 */
+	/** change callback field */
 	target?: string;
 }
 

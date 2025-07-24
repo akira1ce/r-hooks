@@ -49,9 +49,6 @@ const defaultMousePosition: MousePosition = {
 
 /**
  * React hook to track mouse position and event data on a target element.
- *
- * @param target - The DOM target to listen for mousemove events.
- * @returns Mouse position, including element-relative and element size info.
  */
 export const useMos = (target?: DomTarget<HTMLDivElement>): MousePosition => {
 	const [mos, setMos] = useState<MousePosition>(defaultMousePosition);
