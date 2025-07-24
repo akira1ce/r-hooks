@@ -11,10 +11,10 @@
     "importHelpers": true,
     "baseUrl": "./",
     "paths": {
-      "@/*": ["src/*"]
+      "@/*": ["lib/*"]
     },
     "lib": ["ES2016", "DOM"],
     "jsx": "react-jsx"
   },
-  "include": ["src"]
+  "include": ["lib"]
 }

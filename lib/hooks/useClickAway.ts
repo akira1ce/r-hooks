@@ -7,9 +7,7 @@ export const useClickAway = <T extends HTMLElement>(
 ) => {
 	useEventListener("mousedown", (e) => {
 		const el = elementRef?.current;
-
 		if (!el || el.contains(e.target as Node)) return;
-
 		handler(e);
 	});
 };

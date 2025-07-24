@@ -2,9 +2,9 @@
   "name": "@akira1ce/r-hooks",
   "version": "1.0.10",
   "type": "module",
-  "main": "dist/lib/index.js",
+  "main": "dist/es/index.js",
   "module": "dist/es/index.js",
-  "types": "dist/es/hooks/index.d.ts",
+  "types": "dist/es/index.d.ts",
   "files": [
     "dist"
   ],

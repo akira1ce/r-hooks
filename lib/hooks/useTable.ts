@@ -1,6 +1,6 @@
 import { useCallback, useEffect, useRef, useState } from "react";
-import { debounce } from "@/utils/function";
-import { get } from "@/utils/object";
+import { debounce } from "@/helper/function";
+import { get } from "@/helper/object";
 
 /* you may need to customize the params */
 export interface Params {

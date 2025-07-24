@@ -1,5 +1,5 @@
 import { useMemo, useRef } from "react";
-import { has } from "@/utils/object";
+import { has } from "@/helper/object";
 import { useMemoizedFn } from "./useMemoizedFn";
 import { useUpdate } from "./useUpdate";
 
