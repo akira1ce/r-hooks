@@ -6,6 +6,7 @@ export { useDeepEffect } from "./hooks/useDeepEffect";
 export { useEventListener } from "./hooks/useEventListener";
 export { useLeast } from "./hooks/useLeast";
 export { useMemoizedFn } from "./hooks/useMemoizedFn";
+export { useMos } from "./hooks/useMos";
 export { useRequest } from "./hooks/useRequest";
 export { useTable } from "./hooks/useTable";
 export { useUpdate } from "./hooks/useUpdate";
