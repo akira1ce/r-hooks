@@ -1,27 +1,65 @@
-import type { RefObject } from "react";
 import { useEffect } from "react";
+import { type DomTarget, getTargetElement, type TargetType } from "@/helper/domTarget";
 import { useMemoizedFn } from "./useMemoizedFn";
 
-export interface UseEventListenerOptions<T> {
-	target?: RefObject<T>;
+/**
+ * Options for useEventListener.
+ */
+export interface UseEventListenerOptions<T extends TargetType = TargetType> {
+	/**
+	 * The target to attach the event listener to.
+	 * If not provided, defaults to `window`.
+	 */
+	target?: DomTarget<T>;
 }
 
-export const useEventListener = <T extends HTMLElement>(
-	eventName: keyof HTMLElementEventMap,
-	handler: (event: Event) => void,
-	options?: UseEventListenerOptions<T>,
-) => {
+/**
+ * useEventListener overloads for HTMLElement, Document, and Window.
+ */
+export function useEventListener<K extends keyof HTMLElementEventMap>(
+	eventName: K,
+	handler: (event: HTMLElementEventMap[K]) => void,
+	options?: UseEventListenerOptions<HTMLElement>,
+): void;
+
+export function useEventListener<K extends keyof DocumentEventMap>(
+	eventName: K,
+	handler: (event: DocumentEventMap[K]) => void,
+	options?: UseEventListenerOptions<Document>,
+): void;
+
+export function useEventListener<K extends keyof WindowEventMap>(
+	eventName: K,
+	handler: (event: WindowEventMap[K]) => void,
+	options?: UseEventListenerOptions<Window>,
+): void;
+
+/**
+ * React hook for adding event listeners to HTMLElement, Document, or Window.
+ *
+ * @param eventName - The event name to listen for.
+ * @param handler - The event handler function.
+ * @param options - Optional. The target to attach the event to.
+ */
+export function useEventListener(
+	eventName: string,
+	handler: (event: any) => void,
+	options?: UseEventListenerOptions<any>,
+): void {
 	const _handler = useMemoizedFn(handler);
 
 	useEffect(() => {
-		const element = options?.target?.current || window;
+		const target = getTargetElement(options?.target, window);
 
-		if (!element || !element.addEventListener) return;
+		if (!target || typeof (target as any).addEventListener !== "function") {
+			console.warn(`Target is not an event target: ${target}`);
+			return;
+		}
 
-		element.addEventListener(eventName, _handler);
+		target.addEventListener(eventName, _handler);
 
 		return () => {
-			element.removeEventListener(eventName, _handler);
+			(target as EventTarget).removeEventListener(eventName, _handler);
 		};
-	}, [eventName]);
-};
+	}, [eventName, options?.target]);
+}

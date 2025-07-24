@@ -1,12 +1,12 @@
-import type { RefObject } from "react";
+import { type DomTarget, getTargetElement } from "@/helper/domTarget";
 import { useEventListener } from "./useEventListener";
 
-export const useClickAway = <T extends HTMLElement>(
-	elementRef: RefObject<T>,
-	handler: (e: Event) => void,
+export const useClickAway = (
+	target: DomTarget,
+	handler: (e: MouseEvent) => void,
 ) => {
 	useEventListener("mousedown", (e) => {
-		const el = elementRef?.current;
+		const el = getTargetElement(target);
 		if (!el || el.contains(e.target as Node)) return;
 		handler(e);
 	});

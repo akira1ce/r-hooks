@@ -1,21 +1,14 @@
-import {
-	type DependencyList,
-	type RefObject,
-	useEffect,
-	useState,
-} from "react";
+import { type DependencyList, useEffect, useState } from "react";
+import { type DomTarget, getTargetElement } from "@/helper/domTarget";
 
-export const useAutoScroll = (
-	target: RefObject<Element>,
-	deps: DependencyList = [],
-) => {
+export const useAutoScroll = (target: DomTarget, deps: DependencyList = []) => {
 	const [enableAutoScroll, setEnableAutoScroll] = useState(true);
 
 	// 滚动到底部
 	const scrollToBottom = () => {
-		if (target.current) {
-			target.current.scrollTop = target.current.scrollHeight;
-		}
+		const el = getTargetElement(target);
+		if (!el) return;
+		el.scrollTop = el.scrollHeight;
 	};
 
 	// 处理滚动事件
