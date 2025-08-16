@@ -1,5 +1,5 @@
 import { type DependencyList, useEffect, useState } from "react";
-import { type DomTarget, getTargetElement } from "@/helper/domTarget";
+import { type DomTarget, getTargetElement } from "../helper/domTarget";
 
 export const useAutoScroll = (target: DomTarget, deps: DependencyList = []) => {
 	const [enableAutoScroll, setEnableAutoScroll] = useState(true);

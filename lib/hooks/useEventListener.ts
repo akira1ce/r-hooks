@@ -1,5 +1,5 @@
 import { useEffect } from "react";
-import { type DomTarget, getTargetElement, type TargetType } from "@/helper/domTarget";
+import { type DomTarget, getTargetElement, type TargetType } from "../helper/domTarget";
 import { useMemoizedFn } from "./useMemoizedFn";
 
 /**

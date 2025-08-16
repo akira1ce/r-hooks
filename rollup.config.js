@@ -8,12 +8,33 @@ export default {
 		{
 			dir: "dist/lib",
 			format: "cjs",
+			preserveModules: true,
+			preserveModulesRoot: "lib",
 		},
 		{
 			dir: "dist/es",
 			format: "esm",
+			preserveModules: true,
+			preserveModulesRoot: "lib",
 		},
 	],
-	plugins: [resolve(), commonjs(), typescript()],
+	plugins: [
+		resolve(),
+		commonjs(),
+		typescript({
+			clean: true,
+			useTsconfigDeclarationDir: false,
+			tsconfigOverride: {
+				compilerOptions: {
+					declaration: true,
+					declarationMap: true,
+					declarationDir: undefined,
+					baseUrl: undefined,
+					paths: undefined,
+				},
+			},
+		}),
+	],
 	external: ["react", "react-dom"],
 };
+

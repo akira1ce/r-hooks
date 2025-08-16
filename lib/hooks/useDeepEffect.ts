@@ -1,5 +1,5 @@
 import { useEffect, useRef } from "react";
-import { isEqual } from "@/helper/object";
+import { isEqual } from "../helper/object";
 import { useMemoizedFn } from "./useMemoizedFn";
 
 /**

@@ -1,4 +1,4 @@
-import { type DomTarget, getTargetElement } from "@/helper/domTarget";
+import { type DomTarget, getTargetElement } from "../helper/domTarget";
 import { useEventListener } from "./useEventListener";
 
 export const useClickAway = (
