@@ -1,8 +1,5 @@
 import { useCallback, useEffect, useRef, useState } from "react";
-import { debounce } from "../helper/function";
-import { get } from "../helper/object";
 
-/* you may need to customize the params */
 export interface Params {
 	pageNum: number;
 	pageSize: number;
@@ -12,79 +9,68 @@ export interface Params {
 export interface Options<T> {
 	defaultParams?: Partial<T>;
 	manual?: boolean;
-	paths?: {
-		data?: string;
-		total?: string;
-	};
 }
 
-/* you may need to customize the response */
 interface ResponseData<T> {
 	total: number;
-	records: T[];
+	list: T[];
 	[key: string]: any;
 }
 
-/* you may need to customize the response */
 interface Response<T> {
 	code: number;
 	error: string;
 	res: ResponseData<T>;
-	trace: string;
 }
 
 type Api<T, K> = (params: T) => Promise<Response<K>>;
 
+const DEFAULT_PARAMS: Params = { pageNum: 1, pageSize: 10 };
+
 /**
  * Table data request
  * Need to be agreed with the agreement
+ * api request need has pageNum、pageSize
+ * api return need has code、error、res，res need has list、total
  */
-export const useTable = <T, K>(api: Api<T, K>, options?: Options<T>) => {
-	const { manual, defaultParams, paths } = options || {};
+export const useTable = <T extends Params, K>(
+	api: Api<T, K>,
+	options?: Options<T>,
+) => {
+	const { manual, defaultParams = DEFAULT_PARAMS } = options || {};
 	const [data, setData] = useState<K[]>([]);
 	const [loading, setLoading] = useState(false);
 	const [total, setTotal] = useState(0);
 
-	/* you may need to customize the paths */
-	const _paths = { data: "res.records", total: "res.total", ...paths };
-
-	/* you may need to customize the params */
-	const _params = useRef<any>({
-		pageNum: 1,
-		pageSize: 10,
-		...defaultParams,
-	});
+	const paramsRef = useRef<T>(defaultParams as any);
 
 	const pagination = {
-		current: _params.current.pageNum,
-		pageSize: _params.current.pageSize,
+		current: paramsRef.current.pageNum,
+		pageSize: paramsRef.current.pageSize,
 		total,
 		showTotal: (total: number) => `共${total}条`,
 		showQuickJumper: true,
 		showSizeChanger: true,
 		onChange: (page: number, pageSize: number) => {
-			_params.current.pageNum = page;
-			_params.current.pageSize = pageSize;
+			paramsRef.current.pageNum = page;
+			paramsRef.current.pageSize = pageSize;
 			fetchApi();
 		},
 	};
 
-	const fetchApi = useCallback(
-		debounce((params?: Partial<T>) => {
-			_params.current = { ..._params.current, ...params };
-			setLoading(true);
-		}, 300),
-		[],
-	);
+	const fetchApi = useCallback((params?: Partial<T>) => {
+		paramsRef.current = { ...paramsRef.current, ...params };
+		setLoading(true);
+	}, []);
 
 	useEffect(() => {
 		if (!loading) return;
-		api(_params.current)
-			.then((ress) => {
+		api(paramsRef.current)
+			.then(({ res, code, error }) => {
 				/* you may need to customize the response */
-				if (ress.code !== 0) throw new Error(ress.error);
-				setData(get(ress, _paths.data) || []);
-				setTotal(get(ress, _paths.total) || 0);
+				if (code !== 0) throw new Error(error);
+				setData(res.list || []);
+				setTotal(res.total || 0);
 				setLoading(false);
 			})
 			.catch((err) => {
@@ -104,5 +90,6 @@ export const useTable = <T, K>(api: Api<T, K>, options?: Options<T>) => {
 		total,
 		pagination,
 		fetchApi,
+		params: paramsRef.current,
 	};
 };
