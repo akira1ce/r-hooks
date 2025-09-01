@@ -1,65 +1,65 @@
 {
-  "name": "@akira1ce/r-hooks",
-  "version": "1.0.12",
-  "type": "module",
-  "main": "dist/lib/index.js",
-  "module": "dist/es/index.js",
-  "types": "dist/es/index.d.ts",
-  "exports": {
-    ".": {
-      "types": "./dist/es/index.d.ts",
-      "import": "./dist/es/index.js",
-      "require": "./dist/lib/index.js"
-    },
-    "./package.json": "./package.json"
-  },
-  "files": [
-    "dist"
-  ],
-  "scripts": {
-    "build": "rm -rf dist && rollup -c",
-    "lint": "eslint src --ext .ts,.tsx",
-    "format": "biome format --write src",
-    "generate-docs": "node scripts/generate-docs.js",
-    "generate-hook": "node scripts/generate-hook.js"
-  },
-  "keywords": [
-    "react",
-    "react-hooks"
-  ],
-  "license": "MIT",
-  "description": "react hooks",
-  "browserslist": [
-    ">1%",
-    "last 1 version",
-    "Firefox ESR",
-    "not dead"
-  ],
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/akira1ce/r-hooks.git"
-  },
-  "author": {
-    "name": "Akira Ice",
-    "email": "akiraice@163.com"
-  },
-  "devDependencies": {
-    "@biomejs/biome": "^2.1.2",
-    "@rollup/plugin-commonjs": "^28.0.2",
-    "@rollup/plugin-node-resolve": "^16.0.0",
-    "@types/react": "^18.2.0",
-    "eslint": "^9.17.0",
-    "react": "^18.2.0",
-    "react-dom": "^18.2.0",
-    "rollup": "^4.29.1",
-    "rollup-plugin-typescript2": "^0.36.0",
-    "tslib": "^2.8.1",
-    "typescript": "^5.7.2"
-  },
-  "peerDependencies": {
-    "@types/react": "^18.2.0",
-    "react": "^18.2.0",
-    "react-dom": "^18.2.0"
-  },
-  "dependencies": {}
+	"name": "@akira1ce/r-hooks",
+	"version": "1.0.13",
+	"type": "module",
+	"main": "dist/lib/index.js",
+	"module": "dist/es/index.js",
+	"types": "dist/es/index.d.ts",
+	"exports": {
+		".": {
+			"types": "./dist/es/index.d.ts",
+			"import": "./dist/es/index.js",
+			"require": "./dist/lib/index.js"
+		},
+		"./package.json": "./package.json"
+	},
+	"files": [
+		"dist"
+	],
+	"scripts": {
+		"build": "rm -rf dist && rollup -c",
+		"lint": "eslint src --ext .ts,.tsx",
+		"format": "biome format --write src",
+		"generate-docs": "node scripts/generate-docs.js",
+		"generate-hook": "node scripts/generate-hook.js"
+	},
+	"keywords": [
+		"react",
+		"react-hooks"
+	],
+	"license": "MIT",
+	"description": "react hooks",
+	"browserslist": [
+		">1%",
+		"last 1 version",
+		"Firefox ESR",
+		"not dead"
+	],
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/akira1ce/r-hooks.git"
+	},
+	"author": {
+		"name": "Akira Ice",
+		"email": "akiraice@163.com"
+	},
+	"devDependencies": {
+		"@biomejs/biome": "^2.1.2",
+		"@rollup/plugin-commonjs": "^28.0.2",
+		"@rollup/plugin-node-resolve": "^16.0.0",
+		"@types/react": "^18.2.0",
+		"eslint": "^9.17.0",
+		"react": "^18.2.0",
+		"react-dom": "^18.2.0",
+		"rollup": "^4.29.1",
+		"rollup-plugin-typescript2": "^0.36.0",
+		"tslib": "^2.8.1",
+		"typescript": "^5.7.2"
+	},
+	"peerDependencies": {
+		"@types/react": "^18.2.0",
+		"react": "^18.2.0",
+		"react-dom": "^18.2.0"
+	},
+	"dependencies": {}
 }
