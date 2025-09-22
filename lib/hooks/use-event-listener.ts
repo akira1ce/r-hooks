@@ -1,6 +1,6 @@
 import { useEffect } from "react";
-import { type DomTarget, getTargetElement, type TargetType } from "../helper/domTarget";
-import { useMemoizedFn } from "./useMemoizedFn";
+import { type DomTarget, getTargetElement, type TargetType } from "../helper/dom-target";
+import { useMemoizedFn } from "./use-memoized-fn";
 
 /**
  * Options for useEventListener.
@@ -19,19 +19,19 @@ export interface UseEventListenerOptions<T extends TargetType = TargetType> {
 export function useEventListener<K extends keyof HTMLElementEventMap>(
 	eventName: K,
 	handler: (event: HTMLElementEventMap[K]) => void,
-	options?: UseEventListenerOptions<HTMLElement>,
+	options?: UseEventListenerOptions<HTMLElement>
 ): void;
 
 export function useEventListener<K extends keyof DocumentEventMap>(
 	eventName: K,
 	handler: (event: DocumentEventMap[K]) => void,
-	options?: UseEventListenerOptions<Document>,
+	options?: UseEventListenerOptions<Document>
 ): void;
 
 export function useEventListener<K extends keyof WindowEventMap>(
 	eventName: K,
 	handler: (event: WindowEventMap[K]) => void,
-	options?: UseEventListenerOptions<Window>,
+	options?: UseEventListenerOptions<Window>
 ): void;
 
 /**
@@ -44,7 +44,7 @@ export function useEventListener<K extends keyof WindowEventMap>(
 export function useEventListener(
 	eventName: string,
 	handler: (event: any) => void,
-	options?: UseEventListenerOptions<any>,
+	options?: UseEventListenerOptions<any>
 ): void {
 	const _handler = useMemoizedFn(handler);
 

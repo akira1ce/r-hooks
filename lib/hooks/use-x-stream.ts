@@ -1,5 +1,5 @@
-import { useRef, useState } from "react";
-import { useMemoizedFn } from "./useMemoizedFn";
+import { useCallback, useRef, useState } from "react";
+import { useMemoizedFn } from "./use-memoized-fn";
 
 export interface UseXStreamOptions {
 	/** transformer */
@@ -11,10 +11,7 @@ export type Fetcher = (params: any, signal?: AbortSignal) => Promise<Response>;
 /**
  * stream request
  */
-export const useXStream = (
-	fetcher: Fetcher,
-	options: UseXStreamOptions = {},
-) => {
+export const useXStream = (fetcher: Fetcher, options: UseXStreamOptions = {}) => {
 	const { transform } = options;
 
 	const [content, setContent] = useState<string>("");
@@ -27,7 +24,7 @@ export const useXStream = (
 	const _transform = useMemoizedFn(transform ?? ((val) => val));
 
 	/* transform SSE data */
-	const transformChunk = (chunk: string) => {
+	const transformChunk = useCallback((chunk: string) => {
 		bufferRef.current += chunk;
 		const chunks = bufferRef.current.split("\n");
 
@@ -48,14 +45,14 @@ export const useXStream = (
 		bufferRef.current = currentData;
 
 		return lines;
-	};
+	}, []);
 
-	const cancel = () => {
+	const cancel = useCallback(() => {
 		if (controller.current) {
 			controller.current.abort();
 			controller.current = null;
 		}
-	};
+	}, []);
 
 	const run = useMemoizedFn(async (params: any) => {
 		/* reset state */

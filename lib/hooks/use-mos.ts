@@ -1,6 +1,6 @@
 import { useState } from "react";
-import { type DomTarget, getTargetElement } from "../helper/domTarget";
-import { useEventListener } from "./useEventListener";
+import { type DomTarget, getTargetElement } from "../helper/dom-target";
+import { useEventListener } from "./use-event-listener";
 
 /**
  * Mouse position and event data, including element-relative and element size info.
@@ -87,7 +87,7 @@ export const useMos = (target?: DomTarget<HTMLDivElement>): MousePosition => {
 
 			setMos(_mos);
 		},
-		{ target },
+		{ target }
 	);
 
 	return mos;

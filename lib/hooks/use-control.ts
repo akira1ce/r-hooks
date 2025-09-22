@@ -1,7 +1,7 @@
 import { useMemo, useRef } from "react";
 import { has } from "../helper/object";
-import { useMemoizedFn } from "./useMemoizedFn";
-import { useUpdate } from "./useUpdate";
+import { useMemoizedFn } from "./use-memoized-fn";
+import { useUpdate } from "./use-update";
 
 export interface UseControlOptions<T> {
 	/** default value */
@@ -21,15 +21,8 @@ export interface UseControllProps<T> {
 /**
  * Component controlled state management
  */
-export const useControl = <T>(
-	props: UseControllProps<T>,
-	options?: UseControlOptions<T>,
-) => {
-	const {
-		valuePropName = "value",
-		target = "onChange",
-		defaultValue = "defaultValue",
-	} = options ?? {};
+export const useControl = <T>(props: UseControllProps<T>, options?: UseControlOptions<T>) => {
+	const { valuePropName = "value", target = "onChange", defaultValue = "defaultValue" } = options ?? {};
 
 	const value = props[valuePropName] as T;
 

@@ -2,10 +2,7 @@
  * Debounce function
  * @example const debounced = debounce(() => console.log('Hello'), 1000);
  */
-export function debounce<T extends (...args: any[]) => any>(
-	func: T,
-	wait: number,
-): (...args: Parameters<T>) => void {
+export function debounce<T extends (...args: any[]) => any>(func: T, wait: number): (...args: Parameters<T>) => void {
 	let timeout: ReturnType<typeof setTimeout> | null = null;
 
 	return (...args: Parameters<T>) => {
@@ -21,10 +18,7 @@ export function debounce<T extends (...args: any[]) => any>(
  * Throttle function
  * @example const throttled = throttle(() => console.log('Hello'), 1000);
  */
-export function throttle<T extends (...args: any[]) => any>(
-	func: T,
-	limit: number,
-): (...args: Parameters<T>) => void {
+export function throttle<T extends (...args: any[]) => any>(func: T, limit: number): (...args: Parameters<T>) => void {
 	let lastCall = 0;
 
 	return (...args: Parameters<T>) => {
