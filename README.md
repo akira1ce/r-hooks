@@ -17,20 +17,20 @@ yarn add @akira1ce/r-hooks
 ## hooks
 
 - **[use](/docs/use.md)** - Simulates React 18+ `use` hook, handles Promise states
-- **[useLeast](/docs/useLeast.md)** - Keeps the latest value, solves closure issues
-- **[useMemoizedFn](/docs/useMemoizedFn.md)** - Memoized function with stable reference
-- **[useUpdate](/docs/useUpdate.md)** - Forces component re-render
-- **[useDeepEffect](/docs/useDeepEffect.md)** - `useEffect` with deep dependency comparison
+- **[useLeast](/docs/use-least.md)** - Keeps the latest value, solves closure issues
+- **[useMemoizedFn](/docs/use-memoized-fn.md)** - Memoized function with stable reference
+- **[useUpdate](/docs/use-update.md)** - Forces component re-render
+- **[useDeepEffect](/docs/use-deep-effect.md)** - `useEffect` with deep dependency comparison
 
-- **[useControl](/docs/useControl.md)** - Controlled/uncontrolled component state management
+- **[useControl](/docs/use-control.md)** - Controlled/uncontrolled component state management
 
-- **[useRequest](/docs/useRequest.md)** - General request management, supports polling
-- **[useXStream](/docs/useXStream.md)** - Stream-based request handling
-- **[useTable](/docs/useTable.md)** - Table data request management
+- **[useRequest](/docs/use-request.md)** - General request management, supports polling
+- **[useXStream](/docs/use-x-stream.md)** - Stream-based request handling
+- **[useTable](/docs/use-table.md)** - Table data request management
 
-- **[useClickAway](/docs/useClickAway.md)** - Detects clicks outside a target element
-- **[useEventListener](/docs/useEventListener.md)** - Event listener hook
-- **[useAutoScroll](/docs/useAutoScroll.md)** - Automatic scroll management
+- **[useClickAway](/docs/use-click-away.md)** - Detects clicks outside a target element
+- **[useEventListener](/docs/use-event-listener.md)** - Event listener hook
+- **[useAutoScroll](/docs/use-auto-scroll.md)** - Automatic scroll management
 
-- **[useFileUploader](/docs/useFileUploader.md)** - File upload management
-- **[useMos](/docs/useMos.md)** - Tracks mouse movement over an element, returns detailed mouse and element info
+- **[useFileUploader](/docs/use-file-uploader.md)** - File upload management
+- **[useMouse](/docs/use-mos.md)** - Tracks mouse movement over an element, returns detailed mouse and element info
