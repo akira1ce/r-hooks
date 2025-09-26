@@ -1,7 +1,7 @@
 import { useEffect, useMemo, useRef, useState } from "react";
 import { useMemoizedFn } from "./use-memoized-fn";
 
-export interface UseTableOptions<T, K = unknown> {
+export interface UseTableOptions<T> {
 	defaultParams?: T;
 	manual?: boolean;
 }
@@ -14,91 +14,63 @@ export interface UseTableResponse<T> {
 
 export type UseTableApi<T, K> = (params: T) => Promise<UseTableResponse<K>>;
 
-export interface UseTablePagination {
-	total: number;
-	showTotal: (total: number) => string;
-	showQuickJumper: boolean;
-	showSizeChanger: boolean;
-}
-
 export interface UseTableResult<T, K> {
 	data: K[];
 	loading: boolean;
 	total: number;
-	error: Error | null;
-	pagination: UseTablePagination;
-	fetchApi: (params: T) => Promise<void>;
-	refresh: () => Promise<void>;
+	run: (params: Partial<T>) => Promise<void>;
 	params: T;
 }
 
 /**
  * Table data request hook with enhanced error handling and type safety
- *
  * @param api - API function that returns table data
  * @param options - Configuration options
  * @returns Table state and control functions
  */
-export const useTable = <T, K>(api: UseTableApi<T, K>, options?: UseTableOptions<T, K>): UseTableResult<T, K> => {
+export const useTable = <T, K>(api: UseTableApi<T, K>, options?: UseTableOptions<T>): UseTableResult<T, K> => {
 	const { manual = false, defaultParams } = options ?? {};
 
 	const [data, setData] = useState<K[]>([]);
 	const [loading, setLoading] = useState(false);
 	const [total, setTotal] = useState(0);
-	const [error, setError] = useState<Error | null>(null);
 
-	const searchParamsRef = useRef<T>(defaultParams as T);
-	const isInitialMount = useRef(true);
+	const paramsRef = useRef<T>(defaultParams as T);
 
-	const pagination = useMemo(
-		(): UseTablePagination => ({
-			total,
-			showTotal: (total: number) => `共${total}条`,
-			showQuickJumper: true,
-			showSizeChanger: true,
-		}),
-		[total]
-	);
-
-	const executeRequest = useMemoizedFn(async (params: T): Promise<void> => {
+	const fetchApi = useMemoizedFn(async (params: T): Promise<void> => {
 		if (loading) return;
 
 		setLoading(true);
-		setError(null);
 
 		try {
-			const response = await api(params);
-			const newData = response.list ?? [];
-			const newTotal = response.total ?? 0;
+			const res = await api(params);
+			const _data = res.list ?? [];
+			const _total = res.total ?? 0;
 
-			setData(newData);
-			setTotal(newTotal);
+			setData(_data);
+			setTotal(_total);
+			setLoading(false);
 		} catch (err) {
 			setData([]);
 			setTotal(0);
-		} finally {
 			setLoading(false);
 		}
 	});
 
-	const fetchApi = useMemoizedFn(async (params: T): Promise<void> => {
-		searchParamsRef.current = params;
-		await executeRequest(params);
-	});
-
-	const refresh = useMemoizedFn(async (): Promise<void> => {
-		await executeRequest(searchParamsRef.current);
+	/**
+	 * fetch api
+	 * @description fetch api with partial params and merge with previous params, so you can update some params without fetching all params
+	 */
+	const run = useMemoizedFn(async (params: Partial<T> = {}): Promise<void> => {
+		paramsRef.current = { ...paramsRef.current, ...params };
+		await fetchApi(paramsRef.current);
 	});
 
 	// Auto-fetch on mount if not manual
 	useEffect(() => {
-		if (manual || !isInitialMount.current) return;
-
-		isInitialMount.current = false;
-		if (searchParamsRef.current) {
-			executeRequest(searchParamsRef.current);
-		}
+		if (manual) return;
+		fetchApi(paramsRef.current);
 	}, [manual]);
 
-	return { data, loading, total, error, pagination, fetchApi, refresh, params: searchParamsRef.current };
+	return { data, loading, total, run, params: paramsRef.current };
 };
