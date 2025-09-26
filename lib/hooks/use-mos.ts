@@ -78,8 +78,8 @@ export const useMos = (target?: DomTarget<HTMLDivElement>): MousePosition => {
 			if (!el) return;
 
 			const { left, top, width, height } = el.getBoundingClientRect();
-			_mos.elementPosX = left + window.pageXOffset;
-			_mos.elementPosY = top + window.pageYOffset;
+			_mos.elementPosX = left + window.scrollX;
+			_mos.elementPosY = top + window.scrollY;
 			_mos.elementX = Math.max(0, pageX - _mos.elementPosX);
 			_mos.elementY = Math.max(0, pageY - _mos.elementPosY);
 			_mos.elementW = width;
