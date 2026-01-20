@@ -1,6 +1,6 @@
 {
 	"name": "@akira1ce/r-hooks",
-	"version": "1.0.18",
+	"version": "1.0.19",
 	"type": "module",
 	"main": "dist/lib/index.js",
 	"module": "dist/es/index.js",

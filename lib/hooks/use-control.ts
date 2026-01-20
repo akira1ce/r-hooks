@@ -39,12 +39,14 @@ export const useControl = <T>(props: UseControllProps<T>, options?: UseControlOp
 
 	if (isControlled) state.current = value;
 
-	const setState = useMemoizedFn((v: T) => {
+	const setState = useMemoizedFn((v: T | ((prev: T) => T)) => {
+		const newValue = typeof v === "function" ? (v as (prev: T) => T)(state.current as T) : v;
+
 		if (!isControlled) {
-			state.current = v;
+			state.current = newValue;
 			update();
 		}
-		props[target]?.(v);
+		props[target]?.(newValue);
 	});
 
 	return [state.current, setState] as const;
