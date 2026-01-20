@@ -22,7 +22,7 @@ export interface UseControllProps<T> {
  * Component controlled state management
  */
 export const useControl = <T>(props: UseControllProps<T>, options?: UseControlOptions<T>) => {
-	const { valuePropName = "value", target = "onChange", defaultValue = "defaultValue" } = options ?? {};
+	const { valuePropName = "value", target = "onChange", defaultValue } = options ?? {};
 
 	const value = props[valuePropName] as T;
 
