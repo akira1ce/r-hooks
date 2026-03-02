@@ -33,10 +33,11 @@ export const useQuery = <TData, TParams>(
 			const res = await api(paramsRef.current);
 			setData(res);
 			setLoading(false);
-		} catch (err) {
-			setError(err as Error);
+		} catch (err: any) {
 			console.error("akira.err", err);
-		} finally {
+			// if the request is canceled (a new request is running), do not update the state
+			if (err?.isCanceled) return;
+			setError(err as Error);
 			setLoading(false);
 		}
 	});
