@@ -1,20 +1,20 @@
 {
-  "compilerOptions": {
-    "target": "ES2016",
-    "module": "ESNext",
-    "strict": true,
-    "esModuleInterop": true,
-    "declaration": true,
-    "outDir": "dist",
-    "skipLibCheck": true,
-    "moduleResolution": "node",
-    "importHelpers": true,
-    "baseUrl": "./",
-    "paths": {
-      "@/*": ["lib/*"]
-    },
-    "lib": ["ES2016", "DOM"],
-    "jsx": "react-jsx"
-  },
-  "include": ["lib"]
+	"compilerOptions": {
+		"target": "ES2016",
+		"module": "ESNext",
+		"strict": true,
+		"esModuleInterop": true,
+		"declaration": true,
+		"outDir": "dist",
+		"skipLibCheck": true,
+		"moduleResolution": "node",
+		"importHelpers": true,
+		"baseUrl": "./",
+		"paths": {
+			"@/*": ["lib/*"]
+		},
+		"lib": ["ES2016", "DOM"],
+		"jsx": "react-jsx"
+	},
+	"include": ["lib"]
 }

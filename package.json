@@ -19,7 +19,7 @@
 	"scripts": {
 		"build": "rm -rf dist && rollup -c",
 		"lint": "eslint src --ext .ts,.tsx",
-		"format": "biome format --write src",
+		"format": "prettier --write .",
 		"generate-docs": "node scripts/generate-docs.js",
 		"generate-hook": "node scripts/generate-hook.js"
 	},
