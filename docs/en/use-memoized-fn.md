@@ -25,12 +25,12 @@ const MyComponent = () => {
 
 ### params
 
-|Property|Description|Type|Default|
-|---|---|---|---|
-|fn|The function to memoize|`T extends Noop`|`-`|
+| Property | Description             | Type             | Default |
+| -------- | ----------------------- | ---------------- | ------- |
+| fn       | The function to memoize | `T extends Noop` | `-`     |
 
 ### return
 
-|Property|Description|Type|
-|---|---|---|
-|memoizedFn|The memoized function with stable reference|`PickFunction<T>`|
+| Property   | Description                                 | Type              |
+| ---------- | ------------------------------------------- | ----------------- |
+| memoizedFn | The memoized function with stable reference | `PickFunction<T>` |

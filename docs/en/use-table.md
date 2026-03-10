@@ -103,38 +103,38 @@ const ManualTableExample = () => {
 
 ### params
 
-|Property|Description|Type|Default|
-|---|---|---|---|
-|api|API function that returns table data|`UseTableApi<T, K>`|`-`|
-|options|Optional configuration|`UseTableOptions<T>`|`{}`|
+| Property | Description                          | Type                 | Default |
+| -------- | ------------------------------------ | -------------------- | ------- |
+| api      | API function that returns table data | `UseTableApi<T, K>`  | `-`     |
+| options  | Optional configuration               | `UseTableOptions<T>` | `{}`    |
 
 #### UseTableOptions
 
-|Property|Description|Type|Default|
-|---|---|---|---|
-|defaultParams|Default parameters for API calls|`T`|`undefined`|
-|manual|Whether to manually trigger requests|`boolean`|`false`|
+| Property      | Description                          | Type      | Default     |
+| ------------- | ------------------------------------ | --------- | ----------- |
+| defaultParams | Default parameters for API calls     | `T`       | `undefined` |
+| manual        | Whether to manually trigger requests | `boolean` | `false`     |
 
 #### UseTableApi Type
 
 ```typescript
-type UseTableApi<T, K> = (params: T) => Promise<UseTableResponse<K>>
+type UseTableApi<T, K> = (params: T) => Promise<UseTableResponse<K>>;
 ```
 
 #### UseTableResponse Interface
 
-|Property|Description|Type|Default|
-|---|---|---|---|
-|total|Total number of records|`number`|`-`|
-|list|Array of table data|`K[]`|`-`|
-|[key: string]|Any other response properties|`unknown`|`-`|
+| Property      | Description                   | Type      | Default |
+| ------------- | ----------------------------- | --------- | ------- |
+| total         | Total number of records       | `number`  | `-`     |
+| list          | Array of table data           | `K[]`     | `-`     |
+| [key: string] | Any other response properties | `unknown` | `-`     |
 
 ### return
 
-|Property|Description|Type|
-|---|---|---|
-|data|The table data array|`K[]`|
-|loading|Whether a request is in progress|`boolean`|
-|total|Total number of records|`number`|
-|run|Function to trigger API call with partial params|`(params: Partial<T>) => Promise<void>`|
-|params|Current parameters being used|`T`|
+| Property | Description                                      | Type                                    |
+| -------- | ------------------------------------------------ | --------------------------------------- |
+| data     | The table data array                             | `K[]`                                   |
+| loading  | Whether a request is in progress                 | `boolean`                               |
+| total    | Total number of records                          | `number`                                |
+| run      | Function to trigger API call with partial params | `(params: Partial<T>) => Promise<void>` |
+| params   | Current parameters being used                    | `T`                                     |

@@ -41,10 +41,10 @@ const Timer = () => {
 
 ### params
 
-|Property|Description|Type|Default|
-|---|---|---|---|
-|cb|Callback function to execute on each interval|`() => void`|`-`|
-|delay|Delay in milliseconds (null to pause)|`number | null`|`-`|
+| Property | Description                                   | Type         | Default |
+| -------- | --------------------------------------------- | ------------ | ------- | --- |
+| cb       | Callback function to execute on each interval | `() => void` | `-`     |
+| delay    | Delay in milliseconds (null to pause)         | `number      | null`   | `-` |
 
 ### return
 

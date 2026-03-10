@@ -27,6 +27,6 @@ None
 
 ### return
 
-|Property|Description|Type|
-|---|---|---|
-|update|Function to trigger component re-render|`() => void`|
+| Property | Description                             | Type         |
+| -------- | --------------------------------------- | ------------ |
+| update   | Function to trigger component re-render | `() => void` |

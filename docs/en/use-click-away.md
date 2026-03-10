@@ -29,10 +29,10 @@ const Modal = () => {
 
 ### params
 
-|Property|Description|Type|Default|
-|---|---|---|---|
-|target|The DOM target element to monitor|`DomTarget`|`-`|
-|handler|Function to execute when clicking outside|`(e: MouseEvent) => void`|`-`|
+| Property | Description                               | Type                      | Default |
+| -------- | ----------------------------------------- | ------------------------- | ------- |
+| target   | The DOM target element to monitor         | `DomTarget`               | `-`     |
+| handler  | Function to execute when clicking outside | `(e: MouseEvent) => void` | `-`     |
 
 ### return
 

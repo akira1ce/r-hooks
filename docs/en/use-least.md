@@ -24,12 +24,12 @@ const MyComponent = () => {
 
 ### params
 
-|Property|Description|Type|Default|
-|---|---|---|---|
-|value|The value to keep the latest reference of|`T`|`-`|
+| Property | Description                               | Type | Default |
+| -------- | ----------------------------------------- | ---- | ------- |
+| value    | The value to keep the latest reference of | `T`  | `-`     |
 
 ### return
 
-|Property|Description|Type|
-|---|---|---|
-|latestValue|The latest value|`T`|
+| Property    | Description      | Type |
+| ----------- | ---------------- | ---- |
+| latestValue | The latest value | `T`  |
