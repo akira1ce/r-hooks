@@ -10,13 +10,10 @@ export interface UseQueryOptions<TParams, TData> {
 	defaultData?: TData;
 }
 
-export type Service<TData, TParams> = (params?: TParams) => Promise<TData>;
+export type Service<TData, TParams = void> = (params: TParams) => Promise<TData>;
 
-export const useQuery = <TData, TParams>(
-	api: Service<TData, TParams>,
-	options: UseQueryOptions<TParams, TData> = {}
-) => {
-	const { manual = false, defaultParams = {}, defaultData } = options;
+export const useQuery = <TData, TParams>(api: Service<TData, TParams>, options?: UseQueryOptions<TParams, TData>) => {
+	const { manual = false, defaultParams, defaultData } = options || {};
 
 	const [loading, setLoading] = useState(false);
 	const [error, setError] = useState<Error | null>(null);
