@@ -59,24 +59,24 @@ const SearchResults = () => {
 
 ### 参数
 
-| 属性    | 说明               | 类型                              | 默认值 |
-| ------- | ------------------ | --------------------------------- | ------ |
-| api     | 要执行的异步函数   | `Service<TData, TParams>`         | `-`    |
-| options | 可选配置           | `UseQueryOptions<TParams, TData>` | `{}`   |
+| 属性    | 说明             | 类型                              | 默认值 |
+| ------- | ---------------- | --------------------------------- | ------ |
+| api     | 要执行的异步函数 | `Service<TData, TParams>`         | `-`    |
+| options | 可选配置         | `UseQueryOptions<TParams, TData>` | `{}`   |
 
 #### UseQueryOptions
 
-| 属性          | 说明                 | 类型      | 默认值      |
-| ------------- | -------------------- | --------- | ----------- |
-| manual        | 是否手动触发请求     | `boolean` | `false`     |
-| defaultParams | API 调用的默认参数   | `TParams` | `{}`        |
-| defaultData   | 默认数据值           | `TData`   | `undefined` |
+| 属性          | 说明               | 类型      | 默认值      |
+| ------------- | ------------------ | --------- | ----------- |
+| manual        | 是否手动触发请求   | `boolean` | `false`     |
+| defaultParams | API 调用的默认参数 | `TParams` | `{}`        |
+| defaultData   | 默认数据值         | `TData`   | `undefined` |
 
 #### Service
 
-| 属性    | 说明             | 类型                                   |
-| ------- | ---------------- | -------------------------------------- |
-| Service | API 调用的异步函数类型 | `(params?: TParams) => Promise<TData>` |
+| 属性    | 说明                   | 类型                                  |
+| ------- | ---------------------- | ------------------------------------- |
+| Service | API 调用的异步函数类型 | `(params: TParams) => Promise<TData>` |
 
 ### 返回值
 
