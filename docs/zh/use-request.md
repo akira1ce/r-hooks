@@ -60,18 +60,18 @@ const PollingExample = () => {
 
 ### 参数
 
-| 属性    | 说明           | 类型                      | 默认值 |
-| ------- | -------------- | ------------------------- | ------ |
-| api     | API 服务函数   | `Service<TData, TParams>` | `-`    |
-| options | 可选配置       | `UseRequestOptions`       | `{}`   |
+| 属性    | 说明         | 类型                      | 默认值 |
+| ------- | ------------ | ------------------------- | ------ |
+| api     | API 服务函数 | `Service<TData, TParams>` | `-`    |
+| options | 可选配置     | `UseRequestOptions`       | `{}`   |
 
 #### UseRequestOptions
 
-| 属性              | 说明                             | 类型      | 默认值      |
-| ----------------- | -------------------------------- | --------- | ----------- |
-| manual            | 是否手动触发请求                 | `boolean` | `false`     |
-| pollingInterval   | 轮询间隔时间（毫秒）            | `number`  | `undefined` |
-| pollingRetryCount | 轮询重试次数（-1 为无限重试）    | `number`  | `undefined` |
+| 属性              | 说明                          | 类型      | 默认值      |
+| ----------------- | ----------------------------- | --------- | ----------- |
+| manual            | 是否手动触发请求              | `boolean` | `false`     |
+| pollingInterval   | 轮询间隔时间（毫秒）          | `number`  | `undefined` |
+| pollingRetryCount | 轮询重试次数（-1 为无限重试） | `number`  | `undefined` |
 
 #### Service 类型
 
@@ -81,9 +81,9 @@ type Service<TData, TParams> = (params?: TParams) => Promise<TData>;
 
 ### 返回值
 
-| 属性    | 说明                 | 类型                                 |
-| ------- | -------------------- | ------------------------------------ | ----------- |
-| data    | 响应数据             | `TData                               | undefined`  |
-| loading | 请求是否进行中       | `boolean`                            |
-| run     | 手动触发请求的函数   | `(params?: TParams) => Promise<TData | undefined>` |
-| cancel  | 取消轮询的函数       | `() => void`                         |
+| 属性    | 说明               | 类型                                 |
+| ------- | ------------------ | ------------------------------------ | ----------- |
+| data    | 响应数据           | `TData                               | undefined`  |
+| loading | 请求是否进行中     | `boolean`                            |
+| run     | 手动触发请求的函数 | `(params?: TParams) => Promise<TData | undefined>` |
+| cancel  | 取消轮询的函数     | `() => void`                         |

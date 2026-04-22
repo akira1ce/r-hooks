@@ -66,30 +66,30 @@ const CustomSelect = (props) => {
 
 ### 参数
 
-| 属性    | 说明                               | 类型                   | 默认值 |
-| ------- | ---------------------------------- | ---------------------- | ------ |
+| 属性    | 说明                                  | 类型                   | 默认值 |
+| ------- | ------------------------------------- | ---------------------- | ------ |
 | props   | 可能包含 value 和 onChange 的组件属性 | `UseControllProps<T>`  | `-`    |
-| options | 可选配置                           | `UseControlOptions<T>` | `{}`   |
+| options | 可选配置                              | `UseControlOptions<T>` | `{}`   |
 
 #### UseControlOptions
 
-| 属性          | 说明                   | 类型     | 默认值       |
-| ------------- | ---------------------- | -------- | ------------ |
-| defaultValue  | 非受控模式下的默认值   | `T`      | `undefined`  |
-| valuePropName | value 属性名           | `string` | `'value'`    |
-| target        | 变更回调属性名         | `string` | `'onChange'` |
+| 属性          | 说明                 | 类型     | 默认值       |
+| ------------- | -------------------- | -------- | ------------ |
+| defaultValue  | 非受控模式下的默认值 | `T`      | `undefined`  |
+| valuePropName | value 属性名         | `string` | `'value'`    |
+| target        | 变更回调属性名       | `string` | `'onChange'` |
 
 #### UseControllProps
 
-| 属性          | 说明           | 类型                 | 默认值      |
-| ------------- | -------------- | -------------------- | ----------- |
-| value         | 受控值         | `T`                  | `undefined` |
-| onChange      | 变更回调函数   | `(value: T) => void` | `undefined` |
-| [key: string] | 其他属性       | `any`                | `-`         |
+| 属性          | 说明         | 类型                 | 默认值      |
+| ------------- | ------------ | -------------------- | ----------- |
+| value         | 受控值       | `T`                  | `undefined` |
+| onChange      | 变更回调函数 | `(value: T) => void` | `undefined` |
+| [key: string] | 其他属性     | `any`                | `-`         |
 
 ### 返回值
 
-| 属性     | 说明                           | 类型                 |
-| -------- | ------------------------------ | -------------------- |
-| value    | 当前值（受控或内部状态）       | `T`                  |
-| setValue | 更新值的函数                   | `(value: T) => void` |
+| 属性     | 说明                     | 类型                 |
+| -------- | ------------------------ | -------------------- |
+| value    | 当前值（受控或内部状态） | `T`                  |
+| setValue | 更新值的函数             | `(value: T) => void` |

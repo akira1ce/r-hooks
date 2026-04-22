@@ -50,9 +50,9 @@ const StreamingComponent = () => {
 
 #### UseXStreamOptions
 
-| 属性      | 说明                     | 类型                        | 默认值      |
-| --------- | ------------------------ | --------------------------- | ----------- |
-| transform | 转换每个数据块的函数     | `(value: string) => string` | `undefined` |
+| 属性      | 说明                 | 类型                        | 默认值      |
+| --------- | -------------------- | --------------------------- | ----------- |
+| transform | 转换每个数据块的函数 | `(value: string) => string` | `undefined` |
 
 #### Fetcher 类型
 
