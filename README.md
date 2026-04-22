@@ -30,6 +30,7 @@ yarn add @akira1ce/r-hooks
 - **[useXStream](/docs/en/use-x-stream.md)** - Stream-based request handling
 - **[useTable](/docs/en/use-table.md)** - Table data request management
 - **[useLoop](/docs/en/use-loop.md)** - Polling with retry and manual start/stop
+- **[useWebSocket](/docs/en/use-web-socket.md)** - WebSocket with auto-reconnect, heartbeat, and offline message queuing
 
 - **[useClickAway](/docs/en/use-click-away.md)** - Detects clicks outside a target element
 - **[useEventListener](/docs/en/use-event-listener.md)** - Event listener hook
