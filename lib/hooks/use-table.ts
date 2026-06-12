@@ -2,7 +2,7 @@ import { useEffect, useMemo, useRef, useState } from "react";
 import { useMemoizedFn } from "./use-memoized-fn";
 
 export interface UseTableOptions<T> {
-	defaultParams?: T;
+	defaultParams?: Partial<T>;
 	manual?: boolean;
 }
 
@@ -29,7 +29,7 @@ export interface UseTableResult<T, K> {
  * @returns Table state and control functions
  */
 export const useTable = <T, K>(api: UseTableApi<T, K>, options?: UseTableOptions<T>): UseTableResult<T, K> => {
-	const { manual = false, defaultParams } = options ?? {};
+	const { manual = false, defaultParams = {} } = options ?? {};
 
 	const [data, setData] = useState<K[]>([]);
 	const [loading, setLoading] = useState(false);

@@ -5,7 +5,7 @@ export interface UseQueryOptions<TParams, TData> {
 	/** whether to manually trigger */
 	manual?: boolean;
 	/** default params */
-	defaultParams?: TParams;
+	defaultParams?: Partial<TParams>;
 	/** default data */
 	defaultData?: TData;
 }
@@ -13,7 +13,7 @@ export interface UseQueryOptions<TParams, TData> {
 export type Service<TData, TParams = void> = (params: TParams) => Promise<TData>;
 
 export const useQuery = <TData, TParams>(api: Service<TData, TParams>, options?: UseQueryOptions<TParams, TData>) => {
-	const { manual = false, defaultParams, defaultData } = options || {};
+	const { manual = false, defaultParams = {}, defaultData } = options || {};
 
 	const [loading, setLoading] = useState(false);
 	const [error, setError] = useState<Error | null>(null);
