@@ -27,6 +27,7 @@ yarn add @akira1ce/r-hooks
 
 - **[useRequest](/docs/en/use-request.md)** - General request management, supports polling
 - **[useQuery](/docs/en/use-query.md)** - Async data fetching with loading/error states
+- **[useOptions](/docs/en/use-options.md)** - Dropdown options extraction from API responses, returns `{ label, value }[]`
 - **[useXStream](/docs/en/use-x-stream.md)** - Stream-based request handling
 - **[useTable](/docs/en/use-table.md)** - Table data request management
 - **[useLoop](/docs/en/use-loop.md)** - Polling with retry and manual start/stop
