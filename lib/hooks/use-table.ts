@@ -2,7 +2,7 @@ import { useEffect, useMemo, useRef, useState } from "react";
 import { useMemoizedFn } from "./use-memoized-fn";
 
 export interface UseTableOptions<T> {
-	defaultParams?: Partial<T>;
+	defaultParams?: T;
 	manual?: boolean;
 }
 
@@ -29,13 +29,13 @@ export interface UseTableResult<T, K> {
  * @returns Table state and control functions
  */
 export const useTable = <T, K>(api: UseTableApi<T, K>, options?: UseTableOptions<T>): UseTableResult<T, K> => {
-	const { manual = false, defaultParams = {} } = options ?? {};
+	const { manual = false, defaultParams } = options ?? {};
 
 	const [data, setData] = useState<K[]>([]);
 	const [loading, setLoading] = useState(false);
 	const [total, setTotal] = useState(0);
 
-	const paramsRef = useRef<T>(defaultParams as T);
+	const paramsRef = useRef(defaultParams ?? ({} as T));
 
 	const fetchApi = useMemoizedFn(async (params: T): Promise<void> => {
 		if (loading) return;
@@ -62,14 +62,14 @@ export const useTable = <T, K>(api: UseTableApi<T, K>, options?: UseTableOptions
 	 * @description fetch api with partial params and merge with previous params, so you can update some params without fetching all params
 	 */
 	const run = useMemoizedFn(async (params: Partial<T> = {}): Promise<void> => {
-		paramsRef.current = { ...paramsRef.current, ...params };
+		paramsRef.current = { ...paramsRef.current, ...params } as T;
 		await fetchApi(paramsRef.current);
 	});
 
 	// Auto-fetch on mount if not manual
 	useEffect(() => {
 		if (manual) return;
-		fetchApi(paramsRef.current);
+		run();
 	}, [manual]);
 
 	return { data, loading, total, run, params: paramsRef.current };

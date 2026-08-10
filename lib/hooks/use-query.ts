@@ -17,7 +17,7 @@ export const useQuery = <TData, TParams>(api: Service<TData, TParams>, options?:
 
 	const [loading, setLoading] = useState(false);
 	const [error, setError] = useState<Error | null>(null);
-	const [data, setData] = useState<TData>(defaultData as TData);
+	const [data, setData] = useState(defaultData);
 
 	const paramsRef = useRef<TParams>(defaultParams as TParams);
 
