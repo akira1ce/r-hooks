@@ -5,7 +5,7 @@ export interface UseQueryOptions<TParams, TData> {
 	/** whether to manually trigger */
 	manual?: boolean;
 	/** default params */
-	defaultParams?: Partial<TParams>;
+	defaultParams?: TParams;
 	/** default data */
 	defaultData?: TData;
 }
