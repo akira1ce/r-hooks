@@ -53,6 +53,31 @@ const SearchResults = () => {
     </div>
   )
 }
+
+// Polling mode
+const LiveStats = () => {
+  const fetchStats = async () => {
+    const response = await fetch('/api/stats')
+    return response.json()
+  }
+
+  const { data, loading, cancel } = useQuery(fetchStats, {
+    pollingInterval: 5000, // Poll every 5 seconds
+    defaultData: { views: 0, likes: 0 }
+  })
+
+  useEffect(() => {
+    return () => cancel() // Clean up polling on unmount
+  }, [cancel])
+
+  return (
+    <div>
+      <div>Views: {data.views}</div>
+      <div>Likes: {data.likes}</div>
+      <button onClick={cancel}>Stop Polling</button>
+    </div>
+  )
+}
 ```
 
 ## Api
@@ -66,11 +91,12 @@ const SearchResults = () => {
 
 #### UseQueryOptions
 
-| Property      | Description                             | Type      | Default     |
-| ------------- | --------------------------------------- | --------- | ----------- |
-| manual        | Whether to manually trigger the request | `boolean` | `false`     |
-| defaultParams | Default parameters for the API call     | `TParams` | `{}`        |
-| defaultData   | Default data value                      | `TData`   | `undefined` |
+| Property        | Description                                      | Type              | Default     |
+| --------------- | ------------------------------------------------ | ----------------- | ----------- |
+| manual          | Whether to manually trigger the request         | `boolean`         | `false`     |
+| defaultParams   | Default parameters for the API call              | `Partial<TParams>`| `{}`        |
+| defaultData     | Default data value                               | `TData`           | `undefined` |
+| pollingInterval | Polling interval in milliseconds, <=0 to disable | `number`          | `0`         |
 
 #### Service
 
@@ -87,3 +113,4 @@ const SearchResults = () => {
 | error    | Error object if the request failed       | `Error \| null`                       |
 | run      | Function to manually trigger the request | `(params?: TParams) => Promise<void>` |
 | params   | Current parameters used for the request  | `TParams`                             |
+| cancel   | Function to cancel polling               | `() => void`                          |
