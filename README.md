@@ -37,5 +37,6 @@ yarn add @akira1ce/r-hooks
 - **[useEventListener](/docs/en/use-event-listener.md)** - Event listener hook
 - **[useAutoScroll](/docs/en/use-auto-scroll.md)** - Automatic scroll management
 - **[useMarquee](/docs/en/use-marquee.md)** - Marquee scrolling with auto-play and manual control
+- **[useLockBodyScroll](/docs/en/use-lock-body-scroll.md)** - Locks or unlocks body scrolling
 
 - **[useMos](/docs/en/use-mos.md)** - Tracks mouse movement over an element, returns detailed mouse and element info
