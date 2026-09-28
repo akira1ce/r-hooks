@@ -54,30 +54,6 @@ const SearchResults = () => {
   )
 }
 
-// 轮询模式
-const LiveStats = () => {
-  const fetchStats = async () => {
-    const response = await fetch('/api/stats')
-    return response.json()
-  }
-
-  const { data, loading, cancel } = useQuery(fetchStats, {
-    pollingInterval: 5000, // 每 5 秒轮询一次
-    defaultData: { views: 0, likes: 0 }
-  })
-
-  useEffect(() => {
-    return () => cancel() // 组件卸载时清理轮询
-  }, [cancel])
-
-  return (
-    <div>
-      <div>浏览量: {data.views}</div>
-      <div>点赞数: {data.likes}</div>
-      <button onClick={cancel}>停止轮询</button>
-    </div>
-  )
-}
 ```
 
 ## Api
@@ -91,12 +67,11 @@ const LiveStats = () => {
 
 #### UseQueryOptions
 
-| 属性            | 说明                                | 类型               | 默认值      |
-| --------------- | ----------------------------------- | ------------------ | ----------- |
-| manual          | 是否手动触发请求                    | `boolean`          | `false`     |
-| defaultParams   | API 调用的默认参数                  | `Partial<TParams>` | `{}`        |
-| defaultData     | 默认数据值                          | `TData`            | `undefined` |
-| pollingInterval | 轮询间隔时间（毫秒），<=0 时禁用    | `number`           | `0`         |
+| 属性          | 说明               | 类型               | 默认值      |
+| ------------- | ------------------ | ------------------ | ----------- |
+| manual        | 是否手动触发请求   | `boolean`          | `false`     |
+| defaultParams | API 调用的默认参数 | `Partial<TParams>` | `{}`        |
+| defaultData   | 默认数据值         | `TData`            | `undefined` |
 
 #### Service
 
@@ -113,4 +88,3 @@ const LiveStats = () => {
 | error   | 请求失败时的错误对象 | `Error \| null`                       |
 | run     | 手动触发请求的函数   | `(params?: TParams) => Promise<void>` |
 | params  | 当前使用的请求参数   | `TParams`                             |
-| cancel  | 取消轮询的函数       | `() => void`                          |

@@ -37,13 +37,9 @@ export const useTable = <T, K>(api: UseTableApi<T, K>, options?: UseTableOptions
 
 	const paramsRef = useRef(defaultParams ?? ({} as T));
 
-	const fetchApi = useMemoizedFn(async (params: T): Promise<void> => {
-		if (loading) return;
-
-		setLoading(true);
-
+	const _runner = useMemoizedFn(async () => {
 		try {
-			const res = await api(params);
+			const res = await api(paramsRef.current);
 			const _data = res.list ?? [];
 			const _total = res.total ?? 0;
 
@@ -63,14 +59,19 @@ export const useTable = <T, K>(api: UseTableApi<T, K>, options?: UseTableOptions
 	 */
 	const run = useMemoizedFn(async (params: Partial<T> = {}): Promise<void> => {
 		paramsRef.current = { ...paramsRef.current, ...params } as T;
-		await fetchApi(paramsRef.current);
+		setLoading(true);
 	});
+
+	useEffect(() => {
+		if (!loading) return;
+		_runner();
+	}, [loading]);
 
 	// Auto-fetch on mount if not manual
 	useEffect(() => {
 		if (manual) return;
 		run();
-	}, [manual]);
+	}, []);
 
 	return { data, loading, total, run, params: paramsRef.current };
 };
