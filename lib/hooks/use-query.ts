@@ -12,12 +12,38 @@ export interface UseQueryOptions<TParams, TData> {
 
 export type Service<TData, TParams = void> = (params: TParams) => Promise<TData>;
 
-export const useQuery = <TData, TParams>(api: Service<TData, TParams>, options?: UseQueryOptions<TParams, TData>) => {
+export interface UseQueryResult<TData, TParams> {
+	data: TData;
+	loading: boolean;
+	error: Error | null;
+	run: (params?: Partial<TParams>) => Promise<void>;
+	params: TParams;
+}
+
+// 有默认数据：data 一定有值
+export function useQuery<TData, TParams>(
+	api: Service<TData, TParams>,
+	options: UseQueryOptions<TParams, TData> & {
+		defaultData: TData;
+	}
+): UseQueryResult<TData, TParams>;
+
+// 没有默认数据：data 可能为 undefined
+export function useQuery<TData, TParams>(
+	api: Service<TData, TParams>,
+	options?: UseQueryOptions<TParams, TData>
+): UseQueryResult<TData | undefined, TParams>;
+
+// 实现签名
+export function useQuery<TData, TParams>(
+	api: Service<TData, TParams>,
+	options?: UseQueryOptions<TParams, TData>
+): UseQueryResult<TData | undefined, TParams> {
 	const { manual = false, defaultParams = {}, defaultData } = options || {};
 
 	const [loading, setLoading] = useState(false);
 	const [error, setError] = useState<Error | null>(null);
-	const [data, setData] = useState(defaultData);
+	const [data, setData] = useState<TData | undefined>(defaultData);
 
 	const paramsRef = useRef<TParams>(defaultParams as TParams);
 
@@ -26,25 +52,29 @@ export const useQuery = <TData, TParams>(api: Service<TData, TParams>, options?:
 			const res = await api(paramsRef.current);
 			setData(res);
 			setLoading(false);
-		} catch (err: any) {
-			setError(err);
+		} catch (err: unknown) {
+			setError(err instanceof Error ? err : new Error(String(err)));
 			setLoading(false);
 		}
 	});
 
-	const run = useMemoizedFn(async (params?: TParams) => {
-		paramsRef.current = { ...paramsRef.current, ...params };
+	const run = useMemoizedFn(async (params?: Partial<TParams>) => {
+		paramsRef.current = {
+			...paramsRef.current,
+			...params,
+		};
+
 		setLoading(true);
 		setError(null);
 	});
 
 	useEffect(() => {
 		if (!loading) return;
-		_runner();
-	}, [loading]);
+		void _runner();
+	}, [loading, _runner]);
 
 	useEffect(() => {
-		if (!manual) run();
+		if (!manual) void run();
 	}, []);
 
 	return {
@@ -54,4 +84,4 @@ export const useQuery = <TData, TParams>(api: Service<TData, TParams>, options?:
 		run,
 		params: paramsRef.current,
 	};
-};
+}
