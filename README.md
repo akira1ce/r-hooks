@@ -29,7 +29,6 @@ yarn add @akira1ce/r-hooks
 - **[useQuery](/docs/en/use-query.md)** - Async data fetching with loading/error states
 - **[useOptions](/docs/en/use-options.md)** - Dropdown options extraction from API responses, returns `{ label, value }[]`
 - **[useXStream](/docs/en/use-x-stream.md)** - Stream-based request handling
-- **[useTable](/docs/en/use-table.md)** - Table data request management
 - **[useLoop](/docs/en/use-loop.md)** - Polling with retry and manual start/stop
 - **[useWebSocket](/docs/en/use-web-socket.md)** - WebSocket with auto-reconnect, heartbeat, and offline message queuing
 

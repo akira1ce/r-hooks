@@ -16,7 +16,8 @@ const UserProfile = () => {
 
   const { data, loading, error, run } = useQuery(fetchUser, {
     defaultParams: { id: '123' },
-    defaultData: null
+    defaultData: null,
+    onError: (error) => console.error(error.message)
   })
 
   if (loading) return <div>加载中...</div>
@@ -72,6 +73,7 @@ const SearchResults = () => {
 | manual        | 是否手动触发请求   | `boolean`          | `false`     |
 | defaultParams | API 调用的默认参数 | `Partial<TParams>` | `{}`        |
 | defaultData   | 默认数据值         | `TData`            | `undefined` |
+| onError       | 请求失败时调用，接收与 error 状态相同的标准化 Error | `(error: Error) => void` | `undefined` |
 
 #### Service
 

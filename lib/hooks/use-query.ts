@@ -8,6 +8,8 @@ export interface UseQueryOptions<TParams, TData> {
 	defaultParams?: Partial<TParams>;
 	/** default data */
 	defaultData?: TData;
+	/** callback when the request fails */
+	onError?: (error: Error) => void;
 }
 
 export type Service<TData, TParams = void> = (params: TParams) => Promise<TData>;
@@ -39,7 +41,7 @@ export function useQuery<TData, TParams>(
 	api: Service<TData, TParams>,
 	options?: UseQueryOptions<TParams, TData>
 ): UseQueryResult<TData | undefined, TParams> {
-	const { manual = false, defaultParams = {}, defaultData } = options || {};
+	const { manual = false, defaultParams = {}, defaultData, onError } = options || {};
 
 	const [loading, setLoading] = useState(false);
 	const [error, setError] = useState<Error | null>(null);
@@ -53,8 +55,10 @@ export function useQuery<TData, TParams>(
 			setData(res);
 			setLoading(false);
 		} catch (err: unknown) {
-			setError(err instanceof Error ? err : new Error(String(err)));
+			const error = err instanceof Error ? err : new Error(String(err));
+			setError(error);
 			setLoading(false);
+			onError?.(error);
 		}
 	});
 
@@ -71,7 +75,7 @@ export function useQuery<TData, TParams>(
 	useEffect(() => {
 		if (!loading) return;
 		void _runner();
-	}, [loading, _runner]);
+	}, [loading]);
 
 	useEffect(() => {
 		if (!manual) void run();

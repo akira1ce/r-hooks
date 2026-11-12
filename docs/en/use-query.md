@@ -16,7 +16,8 @@ const UserProfile = () => {
 
   const { data, loading, error, run } = useQuery(fetchUser, {
     defaultParams: { id: '123' },
-    defaultData: null
+    defaultData: null,
+    onError: (error) => console.error(error.message)
   })
 
   if (loading) return <div>Loading...</div>
@@ -72,6 +73,7 @@ const SearchResults = () => {
 | manual        | Whether to manually trigger the request | `boolean`       | `false`     |
 | defaultParams | Default parameters for the API call  | `Partial<TParams>` | `{}`        |
 | defaultData   | Default data value                   | `TData`            | `undefined` |
+| onError       | Called when the request fails, with the same normalized Error as the error state | `(error: Error) => void` | `undefined` |
 
 #### Service
 

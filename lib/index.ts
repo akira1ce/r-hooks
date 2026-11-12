@@ -8,7 +8,6 @@ export { useLeast } from "./hooks/use-least";
 export { useMemoizedFn } from "./hooks/use-memoized-fn";
 export { useMos } from "./hooks/use-mos";
 export { useQuery } from "./hooks/use-query";
-export { useTable } from "./hooks/use-table";
 export { useUpdate } from "./hooks/use-update";
 export { useXStream } from "./hooks/use-x-stream";
 export { useInterval } from "./hooks/use-interval";
