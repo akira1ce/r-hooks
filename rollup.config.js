@@ -21,6 +21,17 @@ export default {
 	plugins: [
 		resolve(),
 		commonjs(),
+		{
+			name: "commonjs-package-type",
+			generateBundle(outputOptions) {
+				if (outputOptions.format !== "cjs") return;
+				this.emitFile({
+					type: "asset",
+					fileName: "package.json",
+					source: '{\n\t"type": "commonjs"\n}\n',
+				});
+			},
+		},
 		typescript({
 			clean: true,
 			useTsconfigDeclarationDir: false,

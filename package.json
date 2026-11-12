@@ -1,6 +1,6 @@
 {
 	"name": "@akira1ce/r-hooks",
-	"version": "1.4.3",
+	"version": "1.4.4",
 	"type": "module",
 	"main": "dist/lib/index.js",
 	"module": "dist/es/index.js",
@@ -18,6 +18,7 @@
 	],
 	"scripts": {
 		"build": "rm -rf dist && rollup -c",
+		"test:package": "npm run build && node --test tests/package-exports.test.mjs",
 		"lint": "eslint src --ext .ts,.tsx",
 		"format": "prettier --write .",
 		"generate-docs": "node scripts/generate-docs.js",
